@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 
 var indexRouter = require('./routes/index');
+var signUpRouter = require('./routes/signup');
 
 var app = express();
 
@@ -9,16 +10,18 @@ app.use(express.static('public'));
 
 app.use('/', indexRouter);
 
+app.use('/signup', signUpRouter);
+
 app.get('/login', function(req, res){
 	res.render('login', {
 		title:"OCEANY"
 	});
 });
 
-app.get('/signup', function(req, res){
-	res.render('signup', {
-		title:"OCEANY"
-	});
+app.get('/cfd', function(req, res){
+  res.render('cfd', {
+    title:"OCEANY"
+  });
 });
 
 // view engine setup
