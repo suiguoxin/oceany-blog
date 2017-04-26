@@ -10,9 +10,10 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	var email = req.query.email;
-	var name = req.query.name;
-	var password = req.query.password;
+	console.log ("Getting the user infomations ...");
+	var email = req.body.email;
+	var name = req.body.name;
+	var password = req.body.password;
 
 	// 待写入数据库的用户信息
 	var user = {
