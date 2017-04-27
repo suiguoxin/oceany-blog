@@ -1,0 +1,14 @@
+<div>
+    <% if (successful) { %>
+    <div class="alert alert-success">
+        <strong>Success!</strong>
+        <%= successful %>
+    </div>
+    <% } %>
+    <% if (error) { %>
+    <div class="alert alert-warning">
+        <strong>Warning!</strong>
+        <% error %>
+    </div>
+    <% } %>
+</div>
