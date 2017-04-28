@@ -1,6 +1,10 @@
 var express = require('express');
 var path = require('path');
+
+//used to acitiver req.body
 var bodyParser = require('body-parser');
+var multer = require('multer'); // v1.0.5
+var upload = multer(); // for parsing multipart/form-data
 
 var config = require("config-lite");
 
@@ -8,11 +12,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
 
-var multer = require('multer'); // v1.0.5
-var upload = multer(); // for parsing multipart/form-data
-
-var indexRouter = require('./routes/index');
-var signUpRouter = require('./routes/signup');
+var routes = require('./routes/index');
 
 var app = express();
 
@@ -45,20 +45,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/', indexRouter);
-app.use('/signup', signUpRouter);
-
-app.get('/login', function (req, res) {
-    res.render('login', {
-        title: "OCEANY"
-    });
-});
-
-app.get('/cfd', function (req, res) {
-    res.render('cfd', {
-        title: "OCEANY"
-    });
-});
+routes(app);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

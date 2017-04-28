@@ -1,10 +1,15 @@
-var express = require('express');
-var router = express.Router();
+var signUpRouter = require('./signup');
+var loginRouter = require('./login');
+var cfdRouter = require('./cfd');
 
-router.get('/', function(req, res){
-	res.render('index', {
-		title:"OCEANY"
-	});
-});
+module.exports = function(app){
+    app.get('/', function(req, res){
+        res.render('index', {
+            title:"OCEANY"
+        });
+    });
 
-module.exports = router;
+    app.use('/signup', signUpRouter);
+    app.use('/login', loginRouter);
+    app.use('/cfd', cfdRouter);
+};
