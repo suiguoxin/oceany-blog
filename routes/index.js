@@ -3,10 +3,12 @@ var loginRouter = require('./login');
 var cfdRouter = require('./cfd');
 var openFoamRouter = require('./openFoam');
 
-module.exports = function(app){
-    app.get('/', function(req, res){
-        res.render('index', {
-        });
+module.exports = function (app) {
+    app.get('/', function (req, res) {
+        res.render('index', {});
+    });
+    app.get('/index', function (req, res) {
+        res.render('index', {});
     });
 
     app.use('/signup', signUpRouter);

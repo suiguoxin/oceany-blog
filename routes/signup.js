@@ -5,8 +5,7 @@ var sha1 = require('sha1');
 var UserModel = require('../models/users');
 
 router.get('/', function (req, res) {
-    res.render('signup', {
-    });
+    res.render('signup', {});
 });
 
 router.post('/', function (req, res) {
@@ -26,14 +25,12 @@ router.post('/', function (req, res) {
 
     UserModel.create(user)
         .then(function (result) {
-            user = result.ops[0];
-            req.session.user = user;
+            //user = result.ops[0];
+            //req.session.user = user;
             req.flash('success', 'inscription succeed');
             req.flash('error', 'inscription error');
 
-            res.render('cfd', {
-                title: "OCEANY", successful:'inscription successful par params'
-            });
+            res.redirect('index');
         });
 });
 
