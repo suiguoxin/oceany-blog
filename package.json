@@ -4,8 +4,8 @@
   "description": "blog system for oceany",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=default pm2 start app.js --node-args='--harmony' --name 'oceany-blog'",
-    "stop": "pm2 stop oceany-blog"
+    "start": "cross-env NODE_ENV=default pm2 start app.js --node-args='--harmony' --name 'oceany-blog'",
+    "stop": "pm2 stop 'oceany-blog'"
   },
   "author": "Guoxin",
   "license": "ISC",
@@ -20,5 +20,8 @@
     "mongolass": "2.4.5",
     "multer": "1.3.0",
     "sha1": "1.1.1"
+  },
+  "devDependencies": {
+    "cross-env": "^4.0.0"
   }
 }
