@@ -6,7 +6,6 @@ var UserModel = require('../models/users');
 
 router.get('/', function (req, res) {
     res.render('signup', {
-        title: "OCEANY"
     });
 });
 

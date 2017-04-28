@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var pkg = require('./package.json');
 
 //used to acitiver req.body
 var bodyParser = require('body-parser');
@@ -24,6 +25,8 @@ app.set('view engine', 'ejs');
 
 app.use(session({
     secret: 'foo',
+    resave: false,
+    saveUninitialized: true,
     store: new MongoStore({
         url: 'mongodb://admin:admin@ds145009.mlab.com:45009/oceany'
     })
@@ -33,6 +36,12 @@ app.use(flash());
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
+
+//local variables
+app.locals.oceany = {
+    title:pkg.name,
+    description: pkg.description
+};
 
 //添加模板必需的三个变量
 app.use(function (req, res, next) {
