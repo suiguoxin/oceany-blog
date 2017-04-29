@@ -26,7 +26,7 @@ app.set('view engine', 'ejs');
 app.use(session({
     secret: 'foo',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: new MongoStore({
         url: 'mongodb://admin:admin@ds145009.mlab.com:45009/oceany'
     })
@@ -45,9 +45,9 @@ app.locals.oceany = {
 
 //添加模板必需的三个变量
 app.use(function (req, res, next) {
-    //req.locals.user = req.session.user;
+    res.locals.user = req.session.user;
     console.log("saving the flash info...");
-    res.locals.success = req.flash('success');
+    res.locals.success = req.flash('success').toString();
     res.locals.error = req.flash('error').toString();
 
     console.log("flash info saved");

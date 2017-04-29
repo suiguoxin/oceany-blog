@@ -24,11 +24,11 @@ router.post('/', function (req, res) {
     };
 
     UserModel.create(user)
+        //result 什么属性？？ops是什么？？
         .then(function (result) {
-            //user = result.ops[0];
-            //req.session.user = user;
+            user = result.ops[0];
+            req.session.user = user;
             req.flash('success', 'inscription succeed');
-            req.flash('error', 'inscription error');
 
             res.redirect('index');
         });
