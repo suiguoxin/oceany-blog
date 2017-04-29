@@ -27,6 +27,7 @@ router.post('/', function (req, res) {
         //result 什么属性？？ops是什么？？
         .then(function (result) {
             user = result.ops[0];
+            delete user.password;
             req.session.user = user;
             req.flash('success', 'inscription succeed');
 
