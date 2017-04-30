@@ -1,6 +1,7 @@
 var Post = require('../lib/mongo.js').Post;
 var marked = require('marked');
 
+//plugin 关键词是什么意思
 Post.plugin('contentToHtml', {
     afterFind: function (posts) {
         return posts.map(function (post) {

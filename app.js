@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
 
-var config = require("config-lite");
+var config = require("config-lite")(__dirname);
 
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
@@ -24,11 +24,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(session({
-    secret: 'foo',
-    resave: false,
+    name: config.session.key,// 设置 cookie 中保存 session id 的字段名称
+    secret: config.session.secret,// 通过设置 secret 来计算 hash 值并放在 cookie 中，使产生的 signedCookie 防篡改
+    resave: true,
     saveUninitialized: false,
+    cookie: {
+        maxAge: config.session.maxAge// 过期时间，过期后 cookie 中的 session id 自动删除
+    },
     store: new MongoStore({
-        url: 'mongodb://admin:admin@ds145009.mlab.com:45009/oceany'
+        url: config.mongodb
     })
 }));
 
