@@ -1,4 +1,20 @@
 var Post = require('../lib/mongo.js').Post;
+var marked = require('marked');
+
+Post.plugin('contentToHtml', {
+    afterFind: function (posts) {
+        return posts.map(function (post) {
+            post.content = marked(post.content);
+            return post;
+        });
+    },
+    afterFindOne: function (post) {
+        if (post) {
+            post.content = marked(post.content);
+        }
+        return post;
+    }
+});
 
 module.exports = {
     create: function create(post) {
@@ -10,6 +26,7 @@ module.exports = {
         return Post
             .findOne({_id: postId})
             .populate({path: 'author', model: 'User'})
+            .contentToHtml()
             .exec();
     },
     getPosts: function getPosts() {
@@ -17,6 +34,7 @@ module.exports = {
             .find()
             .populate({path: 'author', model: 'User'})
             .sort({_id: -1})
+            .contentToHtml()
             .exec();
     },
     incPv: function incPv(postId) {
