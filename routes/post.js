@@ -16,7 +16,8 @@ router.post('/', function (req, res) {
     var post = {
         author:author,
         title: title,
-        content: content
+        content: content,
+        pv:0
     };
 
     PostModel.create(post)
