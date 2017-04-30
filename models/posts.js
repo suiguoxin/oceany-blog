@@ -28,6 +28,7 @@ module.exports = {
             .findOne({_id: postId})
             .populate({path: 'author', model: 'User'})
             .contentToHtml()
+            .addCreatedAt()
             .exec();
     },
     getPosts: function getPosts() {
@@ -36,6 +37,7 @@ module.exports = {
             .populate({path: 'author', model: 'User'})
             .sort({_id: -1})
             .contentToHtml()
+            .addCreatedAt()
             .exec();
     },
     incPv: function incPv(postId) {

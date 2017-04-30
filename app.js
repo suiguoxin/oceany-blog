@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-w
 
 //local variables
 app.locals.oceany = {
-    title:pkg.name,
+    title: pkg.name,
     description: pkg.description
 };
 
