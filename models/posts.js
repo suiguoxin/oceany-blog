@@ -6,6 +6,9 @@ module.exports = {
     },
 
     getPosts: function getPosts() {
-        return Post.find().exec();
+        return Post
+            .find()
+            .populate({ path: 'author', model: 'User' })
+            .exec();
     }
 };
