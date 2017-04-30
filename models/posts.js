@@ -6,6 +6,12 @@ module.exports = {
             .create(post)
             .exec();
     },
+    getPostById: function getPostById(postId) {
+        return Post
+            .findOne({_id: postId})
+            .populate({path: 'author', model: 'User'})
+            .exec();
+    },
     getPosts: function getPosts() {
         return Post
             .find()
@@ -13,7 +19,7 @@ module.exports = {
             .sort({_id: -1})
             .exec();
     },
-    invPv: function incPv(postId) {
+    incPv: function incPv(postId) {
         return Post
             .update({_id: postId}, {$inc: {pv: 1}})
             .exec();

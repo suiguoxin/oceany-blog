@@ -4,7 +4,7 @@ var router = express.Router();
 var PostModel = require('../models/posts');
 
 router.get('/', function (req, res) {
-    res.render('post');
+    res.render('publish');
 });
 
 router.post('/', function (req, res) {
@@ -14,16 +14,18 @@ router.post('/', function (req, res) {
 
     // 待写入数据库的用户信息
     var post = {
-        author:author,
+        author: author,
         title: title,
         content: content,
-        pv:0
+        pv: 0
     };
 
     PostModel.create(post)
         .then(function (result) {
+            post = result.ops[0];
             req.flash('success', 'post succeed');
-            res.redirect('cfd');
+            //如何在字符串中间使用变量？？
+            res.redirect('/cfd/' + post._id);
         });
 });
 
