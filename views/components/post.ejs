@@ -1,15 +1,14 @@
 <div class="container">
     <div class="blog-header">
-        <p>cfd posts part</p>
+        <p>cfd single post part</p>
     </div>
     <div class="row">
         <div class="col-sm-2  blog-sidebar">
-            <%- include('post-sidebar') %>
+            Menu <br>
+            Author
         </div>
         <div class="col-sm-9 col-sm-offset-1 blog-main">
-            <% posts.forEach(function (post) { %>
-            <%- include('posts-content', {post: post}); %>
-            <% }) %>
+            <%- include('post-content') %>
         </div>
     </div>
 </div>
