@@ -14,6 +14,18 @@ router.post('/', function (req, res) {
     var name = req.body.name;
     var password = req.body.password;
 
+    try{
+        if(!(name.length>=1 && name.length <= 10)){
+            throw new Error('The length of name show between 1 and 10');
+        }
+        if(password.length <3){
+            throw new Error('The length of password should be at least 3');
+        }
+    } catch (e){
+        req.flash('error',e.message);
+        return res.redirect('signup');
+    }
+
     password = sha1(password);
 
     // 待写入数据库的用户信息
@@ -32,6 +44,12 @@ router.post('/', function (req, res) {
             req.flash('success', 'inscription succeed');
 
             res.redirect('index');
+        })
+        .catch(function (e) {
+            if(e.message.match('E11000 duplicate key')){
+                req.flash('error',"User name already exist");
+                return res.redirect('signup');
+            }
         });
 });
 
