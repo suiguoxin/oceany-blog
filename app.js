@@ -80,5 +80,5 @@ app.use(function (err, req, res, next) {
 
 const port = process.env.PORT || config.port;
 app.listen(port, function () {
-    console.log('${pkg.name} listening on port 3000!');
+    console.log('%s listening on port %s!', pkg.name, port);
 });
