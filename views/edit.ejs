@@ -5,9 +5,9 @@
         <div class="col-sm-8">
             <form method="post">
                 标题：<br>
-                <input type="text" name="title" required><br>
+                <input type="text" name="title" value="<%= post.title %>"><br>
                 正文：<br>
-                <textarea name="content"></textarea><br>
+                <input type="text" name="content" value="<%= post.content %>"><br>
                 <button type="submit" class="btn btn-info">发表</button>
             </form>
         </div>

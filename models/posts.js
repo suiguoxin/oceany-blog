@@ -23,6 +23,13 @@ module.exports = {
             .create(post)
             .exec();
     },
+    // 通过文章 id 获取一篇原生文章（编辑文章）
+    getRawPostById: function getRawPostById(postId) {
+        return Post
+            .findOne({ _id: postId })
+            .populate({ path: 'author', model: 'User' })
+            .exec();
+    },
     getPostById: function getPostById(postId) {
         return Post
             .findOne({_id: postId})
@@ -39,6 +46,10 @@ module.exports = {
             .contentToHtml()
             .addCreatedAt()
             .exec();
+    },
+    // 通过用户 id 和文章 id 更新一篇文章
+    updatePostById: function updatePostById(postId, authorId, data) {
+        return Post.update({ author: authorId, _id: postId }, { $set: data }).exec();
     },
     incPv: function incPv(postId) {
         return Post
