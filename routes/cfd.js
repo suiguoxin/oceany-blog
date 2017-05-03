@@ -26,7 +26,7 @@ router.get('/:postId', function (req, res) {
             var comments = result[1];
             res.render('cfd/post', {
                 post: post,
-                comments:comments
+                comments: comments
             });
         });
 });
@@ -35,7 +35,7 @@ router.get('/:postId/edit', function (req, res) {
     var postId = req.params.postId;
     var author = req.session.user._id;
 
-        PostModel.getRawPostById(postId)
+    PostModel.getRawPostById(postId)
         .then(function (result) {
             var post = result;
             if (author.toString() !== post.author._id.toString()) {
@@ -53,7 +53,7 @@ router.post('/:postId/edit', function (req, res) {
     var title = req.body.title;
     var content = req.body.content;
 
-    PostModel.updatePostById(postId,authorId,{title:title,content:content})
+    PostModel.updatePostById(postId, authorId, {title: title, content: content})
         .then(function () {
             req.flash('success', 'edit post succeed');
             res.redirect('/cfd/' + postId);
@@ -66,11 +66,28 @@ router.get('/:postId/delete', function (req, res) {
 
     //code to verify if author == user
 
-    PostModel.deletePostById(postId,authorId)
+    PostModel.deletePostById(postId, authorId)
         .then(function () {
             req.flash('success', 'delete post succeed');
             res.redirect('/cfd');
         });
 });
 
+router.post('/:postId/comment', function (req, res) {
+    var postId = req.params.postId;
+    var authorId = req.session.user._id;
+    var content = req.body.content;
+
+    var comment = {
+        author: authorId,
+        content: content,
+        postId: postId
+    };
+
+    CommentModel.create(comment)
+        .then(function () {
+            req.flash('success', 'post comment succeed');
+            res.redirect('back');
+        });
+});
 module.exports = router;

@@ -2,12 +2,14 @@
     <h3>Comments: </h3>
     <div class="content">
         <% comments.forEach(function (comment) { %>
-        <div class="text"><%- comment.content %></div>
+        <div class="text"><span>author:</span><%- comment.author.name %></div>
+        <div class="text"><span>comment:</span><%- comment.content %></div>
+        <div class="text"><span>time:</span><%- comment.created_at %></div>
         <% }) %>
         <% if (user) { %>
         <form method="post" action="/cfd/<%= post._id %>/comment">
             <div class="form-group">
-                <textarea name="comment"></textarea>
+                <textarea name="content"></textarea>
             </div>
             <input type="submit" value="留言" />
         </form>
