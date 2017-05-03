@@ -6,6 +6,7 @@
                 <p class="blog-post-meta"><%= post.created_at %> by <a href="#"><%- post.author.name %></a></p>
                 <p><%- post.content %></p>
                 <span>浏览(<%= post.pv %>)</span>
+                <span>评论(<%= post.commentsCount %>)</span>
                 <% if(user && post.author._id && user._id.toString() === post.author._id.toString() ) { %>
                 <div class="dropdown">
                     <i href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span></i>

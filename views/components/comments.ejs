@@ -1,0 +1,16 @@
+<div>
+    <h3>Comments: </h3>
+    <div class="content">
+        <% comments.forEach(function (comment) { %>
+        <div class="text"><%- comment.content %></div>
+        <% }) %>
+        <% if (user) { %>
+        <form method="post" action="/cfd/<%= post._id %>/comment">
+            <div class="form-group">
+                <textarea name="comment"></textarea>
+            </div>
+            <input type="submit" value="留言" />
+        </form>
+        <% } %>
+    </div>
+</div>
