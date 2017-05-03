@@ -90,4 +90,15 @@ router.post('/:postId/comment', function (req, res) {
             res.redirect('back');
         });
 });
+
+router.get('/:postId/comments/:commentId/delete', function (req, res) {
+    var commentId = req.params.commentId;
+    var authorId = req.session.user._id;
+
+    CommentModel.deleteCommentById(commentId,authorId)
+        .then(function () {
+            req.flash('success', 'delete comment succeed');
+            res.redirect('back');
+        });
+});
 module.exports = router;

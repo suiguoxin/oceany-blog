@@ -19,5 +19,11 @@ module.exports = {
         return Comment
             .count({postId: postId})
             .exec();
-    }
+    },
+    // 通过用户 id 和留言 id 删除一个留言
+    deleteCommentById: function deleteCommentById(commentId, author) {
+        return Comment
+            .remove({ author: author, _id: commentId })
+            .exec();
+    },
 };

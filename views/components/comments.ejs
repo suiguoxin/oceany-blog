@@ -5,13 +5,18 @@
         <div class="text"><span>author:</span><%- comment.author.name %></div>
         <div class="text"><span>comment:</span><%- comment.content %></div>
         <div class="text"><span>time:</span><%- comment.created_at %></div>
+        <% if (user && comment.author._id && user._id.toString() === comment.author._id.toString()) { %>
+        <div>
+            <a href="/cfd/<%= post._id %>/comments/<%= comment._id %>/delete">删除</a>
+        </div>
+        <% } %>
         <% }) %>
         <% if (user) { %>
         <form method="post" action="/cfd/<%= post._id %>/comment">
             <div class="form-group">
                 <textarea name="content"></textarea>
             </div>
-            <input type="submit" value="留言" />
+            <input type="submit" value="留言"/>
         </form>
         <% } %>
     </div>
