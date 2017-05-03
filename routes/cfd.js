@@ -56,4 +56,17 @@ router.post('/:postId/edit', function (req, res) {
         });
 });
 
+router.get('/:postId/delete', function (req, res) {
+    var postId = req.params.postId;
+    var authorId = req.session.user._id;
+
+    //code to verify if author == user
+
+    PostModel.deletePostById(postId,authorId)
+        .then(function () {
+            req.flash('success', 'delete post succeed');
+            res.redirect('/cfd');
+        });
+});
+
 module.exports = router;

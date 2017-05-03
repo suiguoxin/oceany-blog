@@ -49,7 +49,15 @@ module.exports = {
     },
     // 通过用户 id 和文章 id 更新一篇文章
     updatePostById: function updatePostById(postId, authorId, data) {
-        return Post.update({ author: authorId, _id: postId }, { $set: data }).exec();
+        return Post
+            .update({ author: authorId, _id: postId }, { $set: data })
+            .exec();
+    },
+    // 通过用户 id 和文章 id 更新一篇文章
+    deletePostById: function deletePostById(postId, authorId) {
+        return Post
+            .remove({ author: authorId, _id: postId })
+            .exec();
     },
     incPv: function incPv(postId) {
         return Post
