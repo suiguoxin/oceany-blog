@@ -68,6 +68,7 @@ router.get('/:postId/delete', function (req, res) {
 
     PostModel.deletePostById(postId, authorId)
         .then(function () {
+            CommentModel.deleteCommentsByPostId(postId);
             req.flash('success', 'delete post succeed');
             res.redirect('/cfd');
         });

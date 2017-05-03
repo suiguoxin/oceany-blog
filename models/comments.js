@@ -26,4 +26,9 @@ module.exports = {
             .remove({ author: author, _id: commentId })
             .exec();
     },
+    deleteCommentsByPostId:function deleteCommentsByPostId(postId) {
+        return Comment
+            .remove({postId:postId})
+            .exec();
+    }
 };
