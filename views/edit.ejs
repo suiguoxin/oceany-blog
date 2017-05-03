@@ -4,10 +4,14 @@
     <div class="row">
         <div class="col-sm-8">
             <form method="post">
-                标题：<br>
-                <input type="text" name="title" value="<%= post.title %>"><br>
-                正文：<br>
-                <input type="text" name="content" value="<%= post.content %>"><br>
+                <div class="form-group">
+                    <label for="post-title">标题：</label>
+                    <input type="text" class="form-control" name="title" id="post-title" value="<%= post.title %>">
+                </div>
+                <div class="form-group">
+                    <label for="post-content">正文:</label>
+                    <textarea class="form-control" name="content" id="post-content" rows="10"><%= post.content %></textarea>
+                </div>
                 <button type="submit" class="btn btn-info">发表</button>
             </form>
         </div>

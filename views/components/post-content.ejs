@@ -7,14 +7,13 @@
                 <p><%- post.content %></p>
                 <span>浏览(<%= post.pv %>)</span>
                 <% if(user && post.author._id && user._id.toString() === post.author._id.toString() ) { %>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false"><span class="caret"></span></a>
+                <div class="dropdown">
+                    <i href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span></i>
                     <ul class="dropdown-menu">
                         <li><a href="/cfd/<%= post._id %>/edit">edit</a></li>
                         <li><a href="/cfd/<%= post._id %>/delete">delete</a></li>
                     </ul>
-                </li>
+                </div>
                 <% } %>
             </div>
         </div>

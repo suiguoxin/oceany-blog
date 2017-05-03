@@ -4,10 +4,14 @@
     <div class="row">
         <div class="col-sm-8">
             <form method="post">
-                标题：<br>
-                <input type="text" name="title" required><br>
-                正文：<br>
-                <textarea name="content"></textarea><br>
+                <div class="form-group">
+                    <label for="post-title">标题：</label>
+                    <input type="text" class="form-control" name="title" id="post-title">
+                </div>
+                <div class="form-group">
+                    <label for="post-content">正文:</label>
+                    <textarea class="form-control" name="content" id="post-content" rows="10"></textarea>
+                </div>
                 <button type="submit" class="btn btn-info">发表</button>
             </form>
         </div>
