@@ -6,6 +6,16 @@
                 <p class="blog-post-meta"><%= post.created_at %> by <a href="#"><%- post.author.name %></a></p>
                 <p><%- post.content %></p>
                 <span>浏览(<%= post.pv %>)</span>
+                <% if(user && post.author._id && user._id.toString() === post.author._id.toString() ) { %>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/cfd/<%= post._id %>/edit">edit</a></li>
+                        <li><a href="/cfd/<%= post._id %>/delete">delete</a></li>
+                    </ul>
+                </li>
+                <% } %>
             </div>
         </div>
     </div>
