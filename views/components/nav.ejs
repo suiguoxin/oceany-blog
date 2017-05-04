@@ -1,60 +1,56 @@
 <!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">
-                <img id="logo" src="/img/logo_small.png">
-            </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul id="myTab" class="nav navbar-nav navbar-left">
-                <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="/cfd"><span class="glyphicon glyphicon-book"></span> CFD基础</a></li>
-                <li><a href="/openFoam"><span class="glyphicon glyphicon-education"></span> OpenFoam教程</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false"><span class="glyphicon glyphicon-modal-window"></span> 势流软件 <span
-                                class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-                <li><a href="/#"><span class="glyphicon glyphicon-education"></span>问答</a></li>
-            </ul>
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+<nav class="navbar navbar-toggleable-md navbar-light fixed-top" style="background-color: #e7e7e7">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+        <img id="logo" src="/img/logo_small.png">
+    </a>
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/"><span class="fa fa-home"></span> Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cfd"><span class="fa fa-book"></span> CFD基础</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/openFoam"><span class="fa fa-steam"></span> OpenFoam教程</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false"><span class="fa fa-opera"></span> 势流软件 <span
+                            class="caret"></span></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
                 </div>
-                <button type="submit" class="btn btn-default"> Submit</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>
-                    <ul class="dropdown-menu">
-                        <% if(user) { %>
-                        <li><a href="#">profile</a></li>
-                        <li><a href="/publish">Post</a></li>
-                        <li><a href="/logout">Log out</a></li>
-                        <% } else { %>
-                        <li><a href="/signup">Sign up</a></li>
-                        <li><a href="/login">Log in</a></li>
-                        <% } %>
-                    </ul>
-                </li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/#"><span class="fa fa-question"></span> 问答</a>
+            </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <ul class="nav navbar-nav mt-2 mt-md-0">
+            <li class="nav-item dropdown ml-auto">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false"><span class="fa fa-user-md"> User</span></a>
+                <div class="dropdown-menu">
+                    <% if(user) { %>
+                    <a class="nav-link" href="#">profile</a>
+                    <a class="nav-link" href="/publish">Post</a>
+                    <a class="nav-link" href="/logout">Log out</a>
+                    <% } else { %>
+                    <a class="nav-link" href="/signup">Sign up</a>
+                    <a class="nav-link" href="/login">Log in</a>
+                    <% } %>
+                </div>
+            </li>
+        </ul>
+    </div><!--/.nav-collapse -->
 </nav>
