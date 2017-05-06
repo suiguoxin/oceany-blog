@@ -8,6 +8,43 @@
     line-height: 1.5;
 }
 
+/*
+ * Blog post
+ */
+
+.blog-post {
+    margin-bottom: 60px;
+}
+.blog-post-title {
+    margin-bottom: 5px;
+    font-size: 40px;
+}
+.blog-post-meta {
+    margin-bottom: 20px;
+    color: #999;
+}
+
+/*
+ * Blog posts
+ */
+
+.blog-posts {
+    margin-bottom: 25px;
+    border-top: .05rem solid #e5e5e5;
+    border-bottom: .05rem solid #e5e5e5;
+}
+.blog-posts-title {
+    margin-bottom: 5px;
+    font-size: 30px;
+}
+.blog-posts-meta {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #999;
+}
+
+
+
 /* Sidebar modules for boxing content */
 .sidebar-module {
     padding: 15px;
@@ -22,20 +59,4 @@
 .sidebar-module-inset ul:last-child,
 .sidebar-module-inset ol:last-child {
     margin-bottom: 0;
-}
-
-/*
- * Blog posts
- */
-
-.blog-post {
-    margin-bottom: 60px;
-}
-.blog-post-title {
-    margin-bottom: 5px;
-    font-size: 40px;
-}
-.blog-post-meta {
-    margin-bottom: 20px;
-    color: #999;
 }

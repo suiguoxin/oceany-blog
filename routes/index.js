@@ -3,6 +3,7 @@ var loginRouter = require('./login');
 var logoutRouter = require('./logout');
 var cfdRouter = require('./cfd');
 var openFoamRouter = require('./openFoam');
+var questionsRouter = require('./questions');
 var publishRouter = require('./publish');
 
 module.exports = function (app) {
@@ -18,5 +19,6 @@ module.exports = function (app) {
     app.use('/logout', logoutRouter);
     app.use('/cfd', cfdRouter);
     app.use('/openFoam', openFoamRouter);
+    app.use('/questions', questionsRouter);
     app.use('/publish', publishRouter);
 };
