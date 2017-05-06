@@ -23,7 +23,7 @@ router.post('/', function (req, res) {
     PostModel.create(post)
         .then(function (result) {
             post = result.ops[0];
-            req.flash('success', 'post succeed');
+            req.flash('success', 'post-components succeed');
             //如何在字符串中间使用变量？？
             res.redirect('/cfd/' + post._id);
         });

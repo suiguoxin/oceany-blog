@@ -1,5 +1,20 @@
 <%- include('../header') %>
 
-<%- include('../components/cfd-content') %>
+<div class="container">
+    <div class="blog-header">
+        <p>cfd posts part</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-2  blog-sidebar">
+            <%- include('../posts-components/sidebar') %>
+        </div>
+        <div class="col-sm-9 col-sm-offset-1 blog-main">
+            <% posts.forEach(function (post) { %>
+            <%- include('../posts-components/post-content', {post: post}); %>
+            <% }) %>
+            <%- include('../posts-components/pagination') %>
+        </div>
+    </div>
+</div>
 
 <%- include('../footer') %>
