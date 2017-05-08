@@ -5,14 +5,11 @@ var PostModel = require('../models/posts');
 var CommentModel = require('../models/comments');
 
 router.get('/', function (req, res) {
-    var page = req.query.page ? req.query.page : 1;
-    console.log("getting page " + page + "...");
 
-    PostModel.getFivePosts(page)
+    PostModel.getPosts()
         .then(function (result) {
             res.render('cfd/index', {
-                posts: result,
-                page: page
+                posts: result
             });
         });
 });
