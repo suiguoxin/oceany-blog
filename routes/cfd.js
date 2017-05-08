@@ -12,9 +12,9 @@ router.get('/', function (req, res) {
         .then(function (result) {
             res.render('cfd/index', {
                 posts: result,
-                page:page
+                page: page
             });
-        })
+        });
 });
 
 router.get('/:postId', function (req, res) {

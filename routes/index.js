@@ -4,6 +4,7 @@ var logoutRouter = require('./logout');
 var profileRouter = require('./profile');
 var cfdRouter = require('./cfd');
 var openFoamRouter = require('./openFoam');
+var softwaresRouter = require('./softwares');
 var questionsRouter = require('./questions');
 var publishRouter = require('./publish');
 
@@ -21,6 +22,7 @@ module.exports = function (app) {
     app.use('/profile', profileRouter);
     app.use('/cfd', cfdRouter);
     app.use('/openFoam', openFoamRouter);
+    app.use('/softwares', softwaresRouter);
     app.use('/questions', questionsRouter);
     app.use('/publish', publishRouter);
 };

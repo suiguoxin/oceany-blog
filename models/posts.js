@@ -72,7 +72,7 @@ module.exports = {
             .addCommentsCount()
             .exec();
     },
-    getFivePosts: function getTenPosts(page) {
+    getFivePosts: function getFivePosts(page) {
         return Post
             .find()
             .skip(5 * (page - 1))
@@ -83,6 +83,23 @@ module.exports = {
             .addCreatedAt()
             .addCommentsCount()
             .exec();
+    },
+    getSixPosts: function getSixPosts(page, callback) {
+        return Post
+            .find()
+            .skip(5 * (page - 1))
+            .limit(5)
+            .populate({path: 'author', model: 'User'})
+            .sort({_id: -1})
+            .contentToHtml()
+            .addCreatedAt()
+            .addCommentsCount()
+            .exec();
+    },
+    getPostsCount:function getPostsCount(){
+      return Post
+          .count({})
+          .exec();
     },
     // 通过用户 id 和文章 id 更新一篇文章
     updatePostById: function updatePostById(postId, authorId, data) {
