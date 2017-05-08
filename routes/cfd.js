@@ -5,10 +5,14 @@ var PostModel = require('../models/posts');
 var CommentModel = require('../models/comments');
 
 router.get('/', function (req, res) {
-    PostModel.getPosts()
+    var page = req.query.page ? req.query.page : 1;
+    console.log("getting page " + page + "...");
+
+    PostModel.getFivePosts(page)
         .then(function (result) {
             res.render('cfd/index', {
-                posts: result
+                posts: result,
+                page:page
             });
         })
 });
@@ -96,7 +100,7 @@ router.get('/:postId/comments/:commentId/delete', function (req, res) {
     var commentId = req.params.commentId;
     var authorId = req.session.user._id;
 
-    CommentModel.deleteCommentById(commentId,authorId)
+    CommentModel.deleteCommentById(commentId, authorId)
         .then(function () {
             req.flash('success', 'delete comment succeed');
             res.redirect('back');
