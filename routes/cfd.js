@@ -6,7 +6,8 @@ var CommentModel = require('../models/comments');
 
 router.get('/', function (req, res) {
 
-    PostModel.getPosts()
+    var section = "CFD";
+    PostModel.getPostsBySection(section)
         .then(function (result) {
             res.render('cfd/index', {
                 posts: result

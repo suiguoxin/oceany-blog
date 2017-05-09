@@ -89,6 +89,33 @@ module.exports = {
             .count({})
             .exec();
     },
+    getPostsBySection: function getPostsBySection(section) {
+        return Post
+            .find({section: section})
+            .populate({path: 'author', model: 'User'})
+            .sort({_id: -1})
+            .contentToHtml()
+            .addCreatedAt()
+            .addCommentsCount()
+            .exec();
+    },
+    getFivePostsBySection: function getFivePostsBySection(page,section) {
+        return Post
+            .find({section: section})
+            .skip(5 * (page - 1))
+            .limit(5)
+            .populate({path: 'author', model: 'User'})
+            .sort({_id: -1})
+            .contentToHtml()
+            .addCreatedAt()
+            .addCommentsCount()
+            .exec();
+    },
+    getPostsCountBySection: function getPostsCount(section) {
+        return Post
+            .count({section: section})
+            .exec();
+    },
     // 通过用户 id 和文章 id 更新一篇文章
     updatePostById: function updatePostById(postId, authorId, data) {
         return Post

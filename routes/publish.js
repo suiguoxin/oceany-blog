@@ -10,12 +10,14 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {
     var author = req.session.user._id;
     var title = req.body.title;
+    var section = req.body.section;
     var content = req.body.content;
 
     // 待写入数据库的用户信息
     var post = {
         author: author,
         title: title,
+        section: section,
         content: content,
         pv: 0
     };
