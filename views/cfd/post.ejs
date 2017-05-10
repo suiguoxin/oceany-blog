@@ -1,17 +1,12 @@
 <%- include('../header') %>
 
-<div class="container">
-    <div class="blog-header">
-        <p>cfd single post part</p>
+<div class="row">
+    <div class="col-3 bg-faded">
+        <%- include('menu') %>
     </div>
-    <div class="row">
-        <div class="col-3  blog-sidebar" style="background: gainsboro">
-            <%- include('../post-components/sidebar') %>
-        </div>
-        <div class="col-9 blog-main">
-            <%- include('../post-components/post-content') %>
-            <%- include('../post-components/comments') %>
-        </div>
+    <div class="col-9  blog-sidebar">
+        <%- include('../post-components/post-content') %>
+        <%- include('../post-components/comments') %>
     </div>
 </div>
 
