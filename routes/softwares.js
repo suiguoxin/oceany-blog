@@ -11,20 +11,20 @@ router.get('/', function (req, res) {
 
     PostModel.getPostsCountBySection(section)
         .then(function (postsCount) {
-            console.log("postsCount" + postsCount);
             var postsCount = postsCount;
-            var pagesCount = (postsCount + 4) / 5;
+            //pagesCount is of type float
+            var pagesCount = postsCount / 5;
             var isFirstPage = (page - 1) === 0;
             var isLastPage = (page * 5) > postsCount;
 
-            PostModel.getFivePostsBySection(page,section)
+            PostModel.getFivePostsBySection(page, section)
                 .then(function (result) {
                     res.render('softwares/index', {
                         posts: result,
                         page: page,
                         isFirstPage: isFirstPage,
                         isLastPage: isLastPage,
-                        pagesCount:pagesCount
+                        pagesCount: pagesCount
                     });
                 });
         });
