@@ -2,12 +2,12 @@
 
 <div class="container">
     <div class="blog-header">
-        <p>cfd softwares part</p>
+        <p>softwares posts part</p>
     </div>
     <div class="row">
         <div class="col-8 offset-2 blog-main">
             <% posts.forEach(function (post) { %>
-            <%- include('../posts-components/post-content', {post: post}); %>
+            <%- include('../posts-components/post-content', {post: post,section:section}); %>
             <% }) %>
             <%- include('../posts-components/pagination') %>
         </div>
