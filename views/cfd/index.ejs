@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-8 offset-2 blog-main">
             <% posts.forEach(function (post) { %>
-            <%- include('../posts-components/post-content', {post: post}); %>
+            <%- include('../posts-components/post-content', {post: post, section:section});%>
             <% }) %>
         </div>
         <div class="col-2  blog-sidebar">

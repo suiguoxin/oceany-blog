@@ -10,7 +10,8 @@ router.get('/', function (req, res) {
     PostModel.getPostsBySection(section)
         .then(function (result) {
             res.render('cfd/index', {
-                posts: result
+                posts: result,
+                section:"cfd"
             });
         });
 });

@@ -30,6 +30,7 @@ router.post('/', function (req, res) {
             req.flash('success', 'post-components succeed');
             //如何在字符串中间使用变量？？
             res.redirect('/cfd/' + post._id);
+            //res.redirect(`/${section}/${post._id}`);
         });
 });
 

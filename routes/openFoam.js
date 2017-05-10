@@ -5,7 +5,9 @@ var PostModel = require('../models/posts');
 var CommentModel = require('../models/comments');
 
 router.get('/', function (req, res) {
-    res.render('openFoam/index', {});
+    res.render('openFoam/index', {
+        section:"openFoam"
+    });
 });
 
 router.get('/:index', function (req, res) {
@@ -32,19 +34,23 @@ router.get('/:index', function (req, res) {
                     });
                 });
         });
-    // Promise.all([
-    //     PostModel.getPostById(postId),
-    //     CommentModel.getComments(postId),
-    //     PostModel.incPv(postId)
-    // ])
-    //     .then(function (result) {
-    //         var post = result[0];
-    //         var comments = result[1];
-    //         res.render('openFoam/post', {
-    //             post: post,
-    //             comments: comments
-    //         });
-    //     });
+});
+router.get('/:postId', function (req, res) {
+    var postId = req.params.postId;
+
+    Promise.all([
+        PostModel.getPostById(postId),
+        CommentModel.getComments(postId),
+        PostModel.incPv(postId)
+    ])
+        .then(function (result) {
+            var post = result[0];
+            var comments = result[1];
+            res.render('openFoam/post', {
+                post: post,
+                comments: comments
+            });
+        });
 });
 
 module.exports = router;
