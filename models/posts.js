@@ -62,6 +62,15 @@ module.exports = {
             .addCommentsCount()
             .exec();
     },
+    getPostBySectionAndIndex: function getPostBySectionAndIndex(section, index) {
+        return Post
+            .findOne({section: section, index: index})
+            .populate({path: 'author', model: 'User'})
+            .contentToHtml()
+            .addCreatedAt()
+            .addCommentsCount()
+            .exec();
+    },
     getPosts: function getPosts() {
         return Post
             .find()
