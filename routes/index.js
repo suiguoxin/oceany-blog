@@ -7,6 +7,7 @@ var openFoamRouter = require('./openFoam');
 var softwaresRouter = require('./softwares');
 var questionsRouter = require('./questions');
 var publishRouter = require('./publish');
+var aboutRouter = require('./about');
 
 module.exports = function (app) {
     app.get('/', function (req, res) {
@@ -25,4 +26,5 @@ module.exports = function (app) {
     app.use('/softwares', softwaresRouter);
     app.use('/questions', questionsRouter);
     app.use('/publish', publishRouter);
+    app.use('/about', aboutRouter);
 };
