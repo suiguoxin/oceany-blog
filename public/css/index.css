@@ -5,7 +5,7 @@ html{
     height: 100%;
 }
 body {
-    padding-top: 3rem;
+    padding-top: 3.5rem;
     padding-bottom: 100px;
     color: #5a5a5a;
     min-height: 100%;
@@ -43,6 +43,10 @@ body {
     left: 0;
     min-width: 100%;
     height: 32rem;
+}
+
+.alert{
+    margin-bottom: 0;
 }
 
 /* MARKETING CONTENT
@@ -104,7 +108,6 @@ body {
  */
 
 footer {
-
     text-align: center;
     background-color: #f9f9f9;
     border-top: .05rem solid #e5e5e5;

@@ -1,12 +1,18 @@
 <div>
     <% if (success) { %>
-    <div class="alert alert-success">
+    <div class="alert alert-success fade show">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
         <strong>Success!</strong>
         <%= success %>
     </div>
     <% } %>
     <% if (error) { %>
-    <div class="alert alert-warning">
+    <div class="alert alert-warning fade show">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
         <strong>Warning!</strong>
         <%= error %>
     </div>
