@@ -5,16 +5,20 @@
         <div class="col-sm-8">
             <form method="post">
                 <div class="form-group">
-                    <label for="post-title">标题：</label>
+                    <label for="post-title">标题</label>
                     <input type="text" class="form-control" name="title" id="post-title">
                 </div>
                 <div class="form-group">
                     <label for="post-section">Section：</label>
-                    <select class="form-control" name="section" id="exampleSection">
+                    <select class="form-control" name="section" id="post-section">
                         <option>CFD</option>
                         <option>OpenFoam</option>
                         <option>Softwares</option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="post-index">Index：</label>
+                    <input type="text" class="form-control" name="index" id="post-index" placeholder="examples: 1, 2, 1.1, 2.5...">
                 </div>
                 <div class="form-group">
                     <label for="post-content">正文:</label>

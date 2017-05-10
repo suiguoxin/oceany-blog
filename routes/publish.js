@@ -11,6 +11,7 @@ router.post('/', function (req, res) {
     var author = req.session.user._id;
     var title = req.body.title;
     var section = req.body.section;
+    var index = req.body.index;
     var content = req.body.content;
 
     // 待写入数据库的用户信息
@@ -18,6 +19,7 @@ router.post('/', function (req, res) {
         author: author,
         title: title,
         section: section,
+        index:index,
         content: content,
         pv: 0
     };
