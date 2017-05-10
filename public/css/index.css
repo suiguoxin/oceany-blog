@@ -118,8 +118,8 @@ body {
 
 footer {
     text-align: center;
-    background-color: #f9f9f9;
-    border-top: .05rem solid #e5e5e5;
+    background-color: #4682B4;
+    border-top: .05rem solid yellow;
 
     position: absolute;
     bottom: 0;
@@ -129,5 +129,13 @@ footer {
 
 footer p:last-child {
     margin-bottom: 0;
+}
+
+footer a{
+    color:rgba(255, 255, 255, 0.5);
+}
+
+footer a:hover{
+    color:rgba(255, 255, 255, 0.75);
 }
 
