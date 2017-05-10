@@ -12,6 +12,15 @@ body {
     position: relative;
 }
 
+.navbar .dropdown-menu{
+    min-width:2rem;
+    background:#4682B4;
+}
+.navbar .dropdown-item:hover{
+    background:#4682B4;
+    color:rgba(255, 255, 255, 0.5);
+}
+
 #logo {
     max-height: 38px;
     margin: 0 0;
