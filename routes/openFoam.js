@@ -5,36 +5,16 @@ var PostModel = require('../models/posts');
 var CommentModel = require('../models/comments');
 
 router.get('/', function (req, res) {
-    res.render('openFoam/index', {
-        section:"openFoam"
-    });
-});
-
-router.get('/:index', function (req, res) {
-    var index = req.params.index;
-
-    PostModel.getPostBySectionAndIndex("OpenFoam", index)
+    var section = "OpenFoam";
+    PostModel.getPostsBySection(section)
         .then(function (result) {
-            if (!result) {
-                req.flash('error', 'This post does not exist');
-                res.redirect('back');
-                return;
-            }
-            var post = result;
-            var postId = post._id;
-            Promise.all([
-                CommentModel.getComments(postId),
-                PostModel.incPv(postId)
-            ])
-                .then(function (result) {
-                    var comments = result[0];
-                    res.render('openFoam/post', {
-                        post: post,
-                        comments: comments
-                    });
-                });
+            res.render('openFoam/index', {
+                posts: result,
+                section:"openFoam"
+            });
         });
 });
+
 router.get('/:postId', function (req, res) {
     var postId = req.params.postId;
 
@@ -52,5 +32,31 @@ router.get('/:postId', function (req, res) {
             });
         });
 });
+
+// router.get('/:index', function (req, res) {
+//     var index = req.params.index;
+//
+//     PostModel.getPostBySectionAndIndex("OpenFoam", index)
+//         .then(function (result) {
+//             if (!result) {
+//                 req.flash('error', 'This post does not exist');
+//                 res.redirect('back');
+//                 return;
+//             }
+//             var post = result;
+//             var postId = post._id;
+//             Promise.all([
+//                 CommentModel.getComments(postId),
+//                 PostModel.incPv(postId)
+//             ])
+//                 .then(function (result) {
+//                     var comments = result[0];
+//                     res.render('openFoam/post', {
+//                         post: post,
+//                         comments: comments
+//                     });
+//                 });
+//         });
+// });
 
 module.exports = router;

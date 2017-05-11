@@ -98,11 +98,13 @@ module.exports = {
             .count({})
             .exec();
     },
+    //firstly sort by id, then by index(if exist)
     getPostsBySection: function getPostsBySection(section) {
         return Post
             .find({section: section})
             .populate({path: 'author', model: 'User'})
             .sort({_id: -1})
+            .sort({index:1})
             .contentToHtml()
             .addCreatedAt()
             .addCommentsCount()
