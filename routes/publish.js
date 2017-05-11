@@ -38,10 +38,12 @@ router.post('/', function (req, res) {
 });
 
 router.post('/uploadPost', upload.single('postFile'),function (req, res) {
-    console.log("uploading post...");
+    console.log("uploading post in router...");
     console.log(req.file);
-    res.redirect('/publish');
-    //req.file.toString();
+    console.log(req.body);
+
+    //res.send('Upload Done !');
+    //return req.file.toString();
 });
 
 

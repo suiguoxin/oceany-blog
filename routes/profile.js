@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+var multer = require('multer');
+var upload = multer({dest: 'public/uploads/'});
+
 var UserModel = require('../models/users');
 
 router.get('/', function (req, res) {
@@ -23,6 +26,15 @@ router.post('/', function (req, res) {
             req.flash('success', 'update profile succeed');
             res.redirect('/profile');
         });
+});
+
+router.post('/uploadAvatar', upload.single('avatar'), function (req, res) {
+    console.log("upload avatar in profile.js");
+    console.log(req.file);
+    console.log(req.body);
+
+    res.send('Upload Done !');
+    // res.json({imgSrc: "public/uploads/" + avatar.filename});
 });
 
 module.exports = router;
