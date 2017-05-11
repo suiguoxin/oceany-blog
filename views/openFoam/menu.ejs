@@ -1,26 +1,27 @@
 <div>
     <h5 class="ml-4">Index</h5>
 </div>
+
 <ul class="nav flex-column">
     <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#basic">1 基础教程</a>
         <div class="collapse" id="basic">
-            <a class="nav-link ml-3" href="/openFoam/1.1">1.1 OpenFoam简介</a>
-            <a class="nav-link ml-3" href="/openFoam/1.2">1.2 安装方法</a>
-            <a class="nav-link ml-3" href="/openFoam/1.3">1.3 基础算例</a>
-            <a class="nav-link ml-3" href="/openFoam/1.4">1.4 未完待续。。。</a>
+            <a class="nav-link ml-3" href="#">1.1 OpenFoam简介</a>
+            <a class="nav-link ml-3" href="#">1.2 安装方法</a>
+            <a class="nav-link ml-3" href="#">1.3 基础算例</a>
+            <a class="nav-link ml-3" href="#">1.4 未完待续。。。</a>
         </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">2 CFD理论基础</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#examples">3 海洋工程计算实例</a>
+        <a class="nav-link" data-toggle="collapse" href="#examples">10 Generated Menu</a>
         <div class="collapse" id="examples">
-            <a class="nav-link ml-3" href="/openFoam/3.1">3.1 兴波阻力</a>
-            <a class="nav-link ml-3" href="/openFoam/3.2">3.2 耐波性</a>
-            <a class="nav-link ml-3" href="/openFoam/3.3">3.3 液舱晃荡</a>
-            <a class="nav-link ml-3" href="/openFoam/3.4">3.4 未完待续。。。</a>
+            <% posts.forEach(function (post) { %>
+            <a class="nav-link ml-3" href="/openFoam/<%= post._id %>"><%- post.index %> <%- post.title %></a>
+            <% }) %>
+            <a class="nav-link ml-3" href="/openFoam/3.4">3.11 未完待续。。。</a>
         </div>
     </li>
     <li class="nav-item">

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=default pm2 start app.js --node-args='--harmony' --name 'oceany-blog'",
     "stop": "pm2 stop 'oceany-blog'",
-    "heroku": "NODE_ENV=production node --harmony app"
+    "heroku": "NODE_ENV=default node --harmony app"
   },
   "author": "Guoxin",
   "license": "ISC",
