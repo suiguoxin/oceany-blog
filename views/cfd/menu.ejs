@@ -11,11 +11,20 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#examples">2 结构载荷</a>
-        <div class="collapse" id="examples">
+        <a class="nav-link" data-toggle="collapse" href="#structure">2 结构载荷</a>
+        <div class="collapse" id="structure">
             <a class="nav-link ml-3" href="/openFoam/3.1">2.1 大型物体</a>
             <a class="nav-link ml-3" href="/openFoam/3.2">2.2 小型物体</a>
             <a class="nav-link ml-3" href="/openFoam/3.4">2.3 未完待续。。。</a>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#examples">10 Generated Menu</a>
+        <div class="collapse" id="examples">
+            <% posts.forEach(function (post) { %>
+            <a class="nav-link ml-3" href="/cfd/<%= post._id %>"><%- post.index %> <%- post.title %></a>
+            <% }) %>
+            <a class="nav-link ml-3" href="/openFoam/3.4">3.11 未完待续。。。</a>
         </div>
     </li>
     <li class="nav-item">

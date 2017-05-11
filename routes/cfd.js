@@ -5,13 +5,12 @@ var PostModel = require('../models/posts');
 var CommentModel = require('../models/comments');
 
 router.get('/', function (req, res) {
-
     var section = "CFD";
     PostModel.getPostsBySection(section)
         .then(function (result) {
             res.render('cfd/index', {
                 posts: result,
-                section:"cfd"
+                section: "cfd"
             });
         });
 });
@@ -19,18 +18,23 @@ router.get('/', function (req, res) {
 router.get('/:postId', function (req, res) {
     var postId = req.params.postId;
 
-    Promise.all([
-        PostModel.getPostById(postId),
-        CommentModel.getComments(postId),
-        PostModel.incPv(postId)
-    ])
+    PostModel.getPostsBySection("CFD")
         .then(function (result) {
-            var post = result[0];
-            var comments = result[1];
-            res.render('cfd/post', {
-                post: post,
-                comments: comments
-            });
+            var posts = result;
+            Promise.all([
+                PostModel.getPostById(postId),
+                CommentModel.getComments(postId),
+                PostModel.incPv(postId)
+            ])
+                .then(function (result) {
+                    var post = result[0];
+                    var comments = result[1];
+                    res.render('cfd/post', {
+                        posts: posts,
+                        post: post,
+                        comments: comments
+                    });
+                });
         });
 });
 
