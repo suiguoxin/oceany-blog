@@ -1,7 +1,8 @@
 function uploadAvatar() {
     var formData = new FormData();
-    //如何得到文件的值
-    var avatar = $('#avatar').val();
+    //why this line doesn't work
+    //var avatar = $('#avatar').files[0];
+    avatar = document.getElementById("avatar").files[0];
     formData.append("avatar", avatar);
 
     formData.append("test","content of test");

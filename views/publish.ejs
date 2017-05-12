@@ -33,11 +33,8 @@
 
         <div class="form-group row">
             <label class="col-2 col-form-label" for="postFile">正文:</label>
-            <div class="col-8">
-                <input type="file" name="postFile" class="form-control-file" id="postFile">
-            </div>
-            <div class="col-2">
-                <button class="btn btn-secondary" onclick="uploadPost()">Upload</button>
+            <div class="col-3">
+                <input type="file" name="postFile" class="form-control-file" id="postFile" onchange="uploadPost()">
             </div>
         </div>
 

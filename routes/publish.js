@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var multer  = require('multer');
-var upload = multer({ dest: 'public/uploads/' });
+var multer = require('multer');
+var upload = multer({dest: 'public/uploads/'});
 
 var PostModel = require('../models/posts');
 
@@ -22,7 +22,7 @@ router.post('/', function (req, res) {
         author: author,
         title: title,
         section: section,
-        index:index,
+        index: index,
         content: content,
         pv: 0
     };
@@ -37,13 +37,13 @@ router.post('/', function (req, res) {
         });
 });
 
-router.post('/uploadPost', upload.single('postFile'),function (req, res) {
+router.post('/uploadPost', upload.single('postFile'), function (req, res) {
     console.log("uploading post in router...");
     console.log(req.file);
     console.log(req.body);
 
     //res.send('Upload Done !');
-    //return req.file.toString();
+    return req.file.buffer;
 });
 
 
