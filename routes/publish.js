@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+var multer  = require('multer');
+var upload = multer({ dest: 'public/uploads/' });
+
 var PostModel = require('../models/posts');
 
 router.get('/', function (req, res) {
@@ -33,5 +36,15 @@ router.post('/', function (req, res) {
             //res.redirect(`/${section}/${post._id}`);
         });
 });
+
+router.post('/uploadPost', upload.single('postFile'),function (req, res) {
+    console.log("uploading post in router...");
+    console.log(req.file);
+    console.log(req.body);
+
+    //res.send('Upload Done !');
+    //return req.file.toString();
+});
+
 
 module.exports = router;

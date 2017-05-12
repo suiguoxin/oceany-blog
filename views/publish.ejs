@@ -1,33 +1,51 @@
 <%- include header %>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-            <form method="post">
-                <div class="form-group">
-                    <label for="post-title">标题</label>
-                    <input type="text" class="form-control" name="title" id="post-title">
-                </div>
-                <div class="form-group">
-                    <label for="post-section">Section：</label>
-                    <select class="form-control" name="section" id="post-section">
-                        <option>CFD</option>
-                        <option>OpenFoam</option>
-                        <option>Softwares</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="post-index">Index：</label>
-                    <input type="text" class="form-control" name="index" id="post-index" placeholder="examples: 1, 2, 1.1, 2.5...">
-                </div>
-                <div class="form-group">
-                    <label for="post-content">正文:</label>
-                    <textarea class="form-control" name="content" id="post-content" rows="10"></textarea>
-                </div>
-                <button type="submit" class="btn btn-info">发表</button>
-            </form>
+<script src="js/publish.js"></script>
+
+<div class="container my-3" style="width: 60%">
+    <!--<form enctype='multipart/form-data' action="/publish/uploadPost" method="post">-->
+    <!--</form>-->
+
+    <form method="post" enctype='multipart/form-data'>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="post-title">标题</label>
+            <div class="col-10">
+                <input class="form-control" type="text" name="title" id="post-title">
+            </div>
         </div>
-    </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="post-section">Section：</label>
+            <div class="col-10">
+                <select class="form-control" name="section" id="post-section">
+                    <option>CFD</option>
+                    <option>OpenFoam</option>
+                    <option>Softwares</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="post-index">Index：</label>
+            <div class="col-10">
+                <input type="text" class="form-control" name="index" id="post-index"
+                       placeholder="examples: 1, 2, 1.1, 2.5...">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="postFile">正文:</label>
+            <div class="col-8">
+                <input type="file" name="postFile" class="form-control-file" id="postFile">
+            </div>
+            <div class="col-2">
+                <button class="btn btn-secondary" onclick="uploadPost()">Upload</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <textarea class="form-control" name="content" id="post-content" rows="10"></textarea>
+        </div>
+        <button type="submit" class="btn btn-info">发表</button>
+    </form>
 </div>
 
 <%- include footer %>
