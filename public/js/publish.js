@@ -9,11 +9,11 @@ function uploadPost() {
         data: formData,
         processData: false,
         contentType: false,
-        success: function (returndata) {
-            alert(returndata);
+        success: function (res) {
+            $('#postContent').val(res.content);
         },
-        error: function (returndata) {
-            alert(returndata);
+        error: function (res) {
+            alert(res);
         }
     });
 }

@@ -3,7 +3,7 @@ var router = express.Router();
 
 var multer = require('multer');
 var storage = multer.diskStorage({
-    destination: 'public/uploads/',
+    destination: 'public/uploads/avatar/',
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now());
     }
@@ -39,7 +39,7 @@ router.post('/uploadAvatar', upload.single('avatar'), function (req, res) {
 
     var userId = req.session.user._id;
     var avatar = req.file;
-    var src = "uploads/" + avatar.filename;
+    var src = "uploads/avatar/" + avatar.filename;
 
     UserModel.updateUserById(userId, {avatar: src})
         .then(function () {

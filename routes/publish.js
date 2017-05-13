@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 var multer = require('multer');
-var upload = multer({dest: 'public/uploads/'});
+var storage = multer.memoryStorage();
+var upload = multer({ storage: storage });
 
 var PostModel = require('../models/posts');
 
@@ -40,10 +41,11 @@ router.post('/', function (req, res) {
 router.post('/uploadPost', upload.single('postFile'), function (req, res) {
     console.log("uploading post in router...");
     console.log(req.file);
-    console.log(req.body);
 
-    //res.send('Upload Done !');
-    return req.file.buffer;
+    var content = req.file.buffer.toString();
+    console.log(content);
+
+    res.json({content: content});
 });
 
 
