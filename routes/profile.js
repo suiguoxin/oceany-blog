@@ -25,8 +25,10 @@ router.post('/', upload.single('avatar'), function (req, res) {
     var bio = req.body.bio;
 
     UserModel.updateUserById(userId, {bio: bio})
-        .then(function () {
+        .then(function (r) {
             req.flash('success', 'update profile succeed');
+            //update session
+            req.session.user.bio = bio;
             res.redirect('/profile');
         });
 });
@@ -39,10 +41,11 @@ router.post('/uploadAvatar', upload.single('avatar'), function (req, res) {
     var avatar = req.file;
     var src = "uploads/" + avatar.filename;
 
-    //res.json({src: src});
-
     UserModel.updateUserById(userId, {avatar: src})
         .then(function () {
+            //update session
+            req.session.user.avatar = src;
+            //return img src to ajax
             res.json({src: src});
         });
 });

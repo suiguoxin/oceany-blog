@@ -11,7 +11,7 @@ module.exports = {
     },
     updateUserById: function updateUserById(userId, data) {
         return User
-            .update({_id: userId}, {$set: data})
+            .updateOne({_id: userId}, {$set: data})
             .exec();
     }
 }
