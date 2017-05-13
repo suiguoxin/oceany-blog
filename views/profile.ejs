@@ -25,7 +25,7 @@
             <label>头像</label>
             <input type="file" id="avatar" name="avatar" onchange=uploadAvatar()>
         </div>
-        <img id="avatarPreview" src="..." class="rounded mx-auto d-block" alt="Preview:">
+        <img id="avatarPreview" src="<%= user.avatar %>" class="rounded mx-auto d-block" alt="Preview:" height="120px">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sava changes</button>
     </form>
 

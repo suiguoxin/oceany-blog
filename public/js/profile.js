@@ -6,16 +6,19 @@ function uploadAvatar() {
     formData.append("avatar", avatar);
     formData.append("test","content of body test");
 
-    var src = document.getElementById("avatar").files[0].name;
-    alert(src);
+    //var src = document.getElementById("avatar").files[0].name;
+    //alert(src);
     //var avatarPreview = document.getElementById("avatarPreview");
-    $('#avatarPreview').attr("src",src);
+    //$('#avatarPreview').attr("src",src);
 
     $.ajax({
         url: "/profile/uploadAvatar",
         type: "POST",
         data: formData,
-        processData: false, /* 告诉jQuery不要去处理发送的数据*/
-        contentType: false   /* 告诉jQuery不要去设置Content-Type请求头*/
+        processData: false,
+        contentType: false,
+        success: function (res) {
+            $('#avatarPreview').attr("src",res.src);
+        }
     });
 }
