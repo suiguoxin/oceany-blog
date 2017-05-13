@@ -1,6 +1,6 @@
 function uploadPost() {
     var formData = new FormData();
-    var postFile = document.getElementById("postFile").files[0];
+    var postFile = document.getElementById("post-file").files[0];
     formData.append("postFile", postFile);
 
     $.ajax({
@@ -16,4 +16,13 @@ function uploadPost() {
             alert(res);
         }
     });
+}
+
+function changeSection() {
+    var section = $('#post-section').val();
+    alert(section);
+    if(section.toLowerCase() === "cfd" || section.toLowerCase() === "openfoam"){
+        $('#form-group-index').show();
+    }
+    else $('#form-group-index').hide();
 }

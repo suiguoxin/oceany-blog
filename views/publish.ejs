@@ -16,14 +16,14 @@
         <div class="form-group row">
             <label class="col-2 col-form-label" for="post-section">Section：</label>
             <div class="col-10">
-                <select class="form-control" name="section" id="post-section">
+                <select class="form-control" name="section" id="post-section" onchange="changeSection()">
                     <option>CFD</option>
                     <option>OpenFoam</option>
                     <option>Softwares</option>
                 </select>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" id="form-group-index">
             <label class="col-2 col-form-label" for="post-index">Index：</label>
             <div class="col-10">
                 <input type="text" class="form-control" name="index" id="post-index"
@@ -32,9 +32,9 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-2 col-form-label" for="postFile">正文:</label>
+            <label class="col-2 col-form-label" for="post-file">正文:</label>
             <div class="col-3">
-                <input type="file" name="postFile" class="form-control-file" id="postFile" onchange="uploadPost()">
+                <input type="file" name="postFile" class="form-control-file" id="post-file" onchange="uploadPost()">
             </div>
         </div>
 
