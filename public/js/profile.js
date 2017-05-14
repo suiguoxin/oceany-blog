@@ -6,11 +6,6 @@ function uploadAvatar() {
     formData.append("avatar", avatar);
     formData.append("test","content of body test");
 
-    //var src = document.getElementById("avatar").files[0].name;
-    //alert(src);
-    //var avatarPreview = document.getElementById("avatarPreview");
-    //$('#avatarPreview').attr("src",src);
-
     $.ajax({
         url: "/profile/uploadAvatar",
         type: "POST",

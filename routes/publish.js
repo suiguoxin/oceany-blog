@@ -15,7 +15,8 @@ var uploadDisk = multer({storage: diskStorage});
 var PostModel = require('../models/posts');
 
 router.get('/', function (req, res) {
-    res.render('publish');
+    res.render('publish', {
+    });
 });
 
 router.post('/', function (req, res) {
