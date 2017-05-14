@@ -9,8 +9,8 @@ var diskStorage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now());
     }
 });
-var uploadMemory = multer({ storage: memoryStorage });
-var uploadDisk = multer({ storage: diskStorage });
+var uploadMemory = multer({storage: memoryStorage});
+var uploadDisk = multer({storage: diskStorage});
 
 var PostModel = require('../models/posts');
 
@@ -19,6 +19,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
+    console.log("Pulishing the new post...");
     var author = req.session.user._id;
     var title = req.body.title;
     var section = req.body.section;
@@ -47,23 +48,23 @@ router.post('/', function (req, res) {
 
 router.post('/uploadPost', uploadMemory.single('postFile'), function (req, res) {
     console.log("uploading post in router...");
-    console.log(req.file);
 
     var content = req.file.buffer.toString();
-    console.log(content);
 
     res.json({content: content});
 });
 
 router.post('/uploadImg', uploadDisk.single('postImg'), function (req, res) {
     console.log(req.file);
-    console.log(req.body);
 
     var avatar = req.file;
     var src = "uploads/posts/" + avatar.filename;
+    var url = "http://localhost:3000/" + src;
+    var content = "![" + avatar.originalname + "](" + url + ")";
+    console.log(content);
 
     //return img src to ajax
-    res.json({src: src});
+    res.json({content: content});
 });
 
 

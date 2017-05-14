@@ -58,7 +58,7 @@ function uploadImg() {
         processData: false,
         contentType: false,
         success: function (res) {
-            $('#post-content').val($('#post-content').val() + " " + res.src);
+            $('#post-content').val($('#post-content').val() + " " + res.content);
         },
         error: function (res) {
             alert(res);
