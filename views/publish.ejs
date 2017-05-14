@@ -3,9 +3,6 @@
 <script src="js/publish.js"></script>
 
 <div class="container my-3" style="width: 60%">
-    <!--<form enctype='multipart/form-data' action="/publish/uploadPost" method="post">-->
-    <!--</form>-->
-
     <form method="post" enctype='multipart/form-data'>
         <div class="form-group row">
             <label class="col-2 col-form-label" for="post-title">标题</label>
@@ -37,9 +34,15 @@
                 <input type="file" name="postFile" class="form-control-file" id="post-file" onchange="uploadPost()">
             </div>
         </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="post-img">Insert</label>
+            <div class="col-3 ">
+                <input type="file" name="post-img" class="form-control-file" id="post-img" onchange="uploadImg()">
+            </div>
+        </div>
 
         <div class="form-group">
-            <textarea class="form-control" name="content" id="postContent" rows="10"></textarea>
+            <textarea class="form-control" name="content" id="post-content" rows="10"></textarea>
         </div>
         <button type="submit" class="btn btn-info">发表</button>
     </form>

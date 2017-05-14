@@ -2,8 +2,15 @@ var express = require('express');
 var router = express.Router();
 
 var multer = require('multer');
-var storage = multer.memoryStorage();
-var upload = multer({ storage: storage });
+var memoryStorage = multer.memoryStorage();
+var diskStorage = multer.diskStorage({
+    destination: 'public/uploads/posts/',
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now());
+    }
+});
+var uploadMemory = multer({ storage: memoryStorage });
+var uploadDisk = multer({ storage: diskStorage });
 
 var PostModel = require('../models/posts');
 
@@ -38,7 +45,7 @@ router.post('/', function (req, res) {
         });
 });
 
-router.post('/uploadPost', upload.single('postFile'), function (req, res) {
+router.post('/uploadPost', uploadMemory.single('postFile'), function (req, res) {
     console.log("uploading post in router...");
     console.log(req.file);
 
@@ -46,6 +53,17 @@ router.post('/uploadPost', upload.single('postFile'), function (req, res) {
     console.log(content);
 
     res.json({content: content});
+});
+
+router.post('/uploadImg', uploadDisk.single('postImg'), function (req, res) {
+    console.log(req.file);
+    console.log(req.body);
+
+    var avatar = req.file;
+    var src = "uploads/posts/" + avatar.filename;
+
+    //return img src to ajax
+    res.json({src: src});
 });
 
 
