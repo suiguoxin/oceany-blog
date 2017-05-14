@@ -17,8 +17,9 @@ router.get('/', function (req, res) {
 
 router.get('/:postId', function (req, res) {
     var postId = req.params.postId;
+    var section = "openfoam";
 
-    PostModel.getPostsBySection("openfoam")
+    PostModel.getPostsBySection(section)
         .then(function (result) {
             var posts = result;
             Promise.all([

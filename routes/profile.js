@@ -39,7 +39,7 @@ router.post('/uploadAvatar', upload.single('avatar'), function (req, res) {
 
     var userId = req.session.user._id;
     var avatar = req.file;
-    var src = "uploads/avatars/" + avatar.filename;
+    var src = "http://localhost:3000/uploads/avatars/" + avatar.filename;
 
     UserModel.updateUserById(userId, {avatar: src})
         .then(function () {

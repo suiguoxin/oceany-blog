@@ -3,11 +3,14 @@
     <div class="content">
         <% comments.forEach(function (comment) { %>
         <div class="media my-1" style="border-bottom: .05rem solid #e5e5e5;border-top: .05rem solid #e5e5e5;">
-            <img class="d-flex align-self-start mr-3" src="..." alt="img">
+            <div class="d-flex align-self-start mr-3" style="height:64px;width:64px;">
+                <img class="mx-auto" src="<%= comment.author.avatar %>" alt="avatar"
+                     style="max-height: 64px; max-width:64px">
+            </div>
             <div class="media-body">
-                <h5 class="mt-0"><%- comment.created_at %></h5>
+                <span class="mt-0">Created at <%- comment.created_at %></span>
+                <span> by: <%- comment.author.name %></span>
                 <p> <%- comment.content %></p>
-                <p> <%- comment.author.name %></p>
             </div>
             <% if (user && comment.author._id && user._id.toString() === comment.author._id.toString()) { %>
             <div>
