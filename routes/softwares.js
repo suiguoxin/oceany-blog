@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
     var page = req.query.page ? req.query.page : 1;
     console.log("getting page " + page + "...");
 
-    var section = "Softwares";
+    var section = "softwares";
 
     PostModel.getPostsCountBySection(section)
         .then(function (postsCount) {

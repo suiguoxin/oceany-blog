@@ -5,12 +5,12 @@ var PostModel = require('../models/posts');
 var CommentModel = require('../models/comments');
 
 router.get('/', function (req, res) {
-    var section = "OpenFoam";
+    var section = "openfoam";
     PostModel.getPostsBySection(section)
         .then(function (result) {
-            res.render('openFoam/index', {
+            res.render('openfoam/index', {
                 posts: result,
-                section: "openFoam"
+                section: "openfoam"
             });
         });
 });
@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
 router.get('/:postId', function (req, res) {
     var postId = req.params.postId;
 
-    PostModel.getPostsBySection("OpenFoam")
+    PostModel.getPostsBySection("openfoam")
         .then(function (result) {
             var posts = result;
             Promise.all([
@@ -29,7 +29,7 @@ router.get('/:postId', function (req, res) {
                 .then(function (result) {
                     var post = result[0];
                     var comments = result[1];
-                    res.render('openFoam/post', {
+                    res.render('openfoam/post', {
                         posts: posts,
                         post: post,
                         comments: comments

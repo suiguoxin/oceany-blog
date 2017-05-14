@@ -5,7 +5,7 @@ var PostModel = require('../models/posts');
 var CommentModel = require('../models/comments');
 
 router.get('/', function (req, res) {
-    var section = "CFD";
+    var section = "cfd";
     PostModel.getPostsBySection(section)
         .then(function (result) {
             res.render('cfd/index', {
@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
 router.get('/:postId', function (req, res) {
     var postId = req.params.postId;
 
-    PostModel.getPostsBySection("CFD")
+    PostModel.getPostsBySection("cfd")
         .then(function (result) {
             var posts = result;
             Promise.all([
