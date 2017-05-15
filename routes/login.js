@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var sha1 = require('sha1');
+var bcrypt = require('bcrypt');
+
 var UserModel = require('../models/users');
 
 router.get('/', function (req, res) {
@@ -11,8 +12,6 @@ router.post('/', function (req, res) {
     var name = req.body.name;
     var password = req.body.password;
 
-    password = sha1(password);
-
     UserModel.getUserByname(name)
         .then(function (result) {
             var user = result;
@@ -21,7 +20,14 @@ router.post('/', function (req, res) {
                 return res.redirect('back');
             }
 
-            if (user.password !== password) {
+            // why can't use async mode
+            // bcrypt.compare(password, user.password, function(err, res) {
+            //     if(res===false){
+            //         req.flash('error', 'password is wrong');
+            //         return res.redirect('back');
+            //     }
+            // });
+            if (!bcrypt.compareSync(password, user.password)) {
                 req.flash('error', 'password is wrong');
                 return res.redirect('back');
             }

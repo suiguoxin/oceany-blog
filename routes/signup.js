@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var sha1 = require('sha1');
+var bcrypt = require('bcrypt');
+const saltRounds = 12;
 
 var UserModel = require('../models/users');
 
@@ -26,31 +27,33 @@ router.post('/', function (req, res) {
         return res.redirect('signup');
     }
 
-    password = sha1(password);
+    bcrypt.hash(password, saltRounds, function(err, password) {
+        // 待写入数据库的用户信息
+        var user = {
+            email: email,
+            name: name,
+            password: password
+        };
 
-    // 待写入数据库的用户信息
-    var user = {
-        email: email,
-        name: name,
-        password: password
-    };
-
-    UserModel.create(user)
+        UserModel.create(user)
         //result 什么属性？？ops是什么？？
-        .then(function (result) {
-            user = result.ops[0];
-            delete user.password;
-            req.session.user = user;
-            req.flash('success', 'inscription succeed');
+            .then(function (result) {
+                user = result.ops[0];
+                delete user.password;
+                req.session.user = user;
+                req.flash('success', 'inscription succeed');
 
-            res.redirect('index');
-        })
-        .catch(function (e) {
-            if(e.message.match('E11000 duplicate key')){
-                req.flash('error',"User name already exist");
-                return res.redirect('signup');
-            }
-        });
+                res.redirect('index');
+            })
+            .catch(function (e) {
+                if(e.message.match('E11000 duplicate key')){
+                    req.flash('error',"User name already exist");
+                    return res.redirect('signup');
+                }
+            });
+    });
+
+
 });
 
 module.exports = router;
