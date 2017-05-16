@@ -24,7 +24,7 @@
     "moment": "2.18.1",
     "mongolass": "2.4.5",
     "multer": "1.3.0",
-    "objectid-to-timestamp": "1.3.0",
+    "objectid-to-timestamp": "1.3.0"
   },
   "devDependencies": {
     "cross-env": "^4.0.0"
