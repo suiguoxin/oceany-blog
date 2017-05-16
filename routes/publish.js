@@ -1,16 +1,19 @@
 var express = require('express');
 var router = express.Router();
-
+//multer
 var multer = require('multer');
 var memoryStorage = multer.memoryStorage();
-var diskStorage = multer.diskStorage({
-    destination: 'public/uploads/posts/',
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now());
-    }
-});
 var uploadMemory = multer({storage: memoryStorage});
-var uploadDisk = multer({storage: diskStorage});
+//qiniu
+var qn = require('qn');
+var client = qn.create({
+    accessKey: 'IThkAny7wzlPGCR2pcJT8IrWkdes0Ic7PR38OwoQ',
+    secretKey: '4lUiAwT3jymK85eFu85PboWTjuv6wLM8wMO8oCEs',
+    bucket: 'oceany',
+    origin: 'http://oceany.u.qiniudn.com',
+    timeout: 3600000, // default rpc timeout: one hour
+    uploadURL: 'http://up-z2.qiniu.com/' // the app outside of China
+});
 
 var PostModel = require('../models/posts');
 
@@ -55,17 +58,18 @@ router.post('/uploadPost', uploadMemory.single('postFile'), function (req, res) 
     res.json({content: content});
 });
 
-router.post('/uploadImg', uploadDisk.single('postImg'), function (req, res) {
+router.post('/uploadImg', uploadMemory.single('postImg'), function (req, res) {
     console.log(req.file);
 
-    var avatar = req.file;
-    var src = "uploads/posts/" + avatar.filename;
-    var url = "http://localhost:3000/" + src;
-    var content = "![" + avatar.originalname + "](" + url + ")";
-    console.log(content);
+    var postImg = req.file;
 
-    //return img src to ajax
-    res.json({content: content});
+    client.upload(postImg.buffer, {key: postImg.fieldname+ '-' + Date.now()}, function (err, result) {
+        var url = 'http://oq29i4a0h.bkt.clouddn.com/';
+        var src = url + result.key;
+        var content = "![" + postImg.originalname + "](" + src + ")";
+        //return img src to ajax
+        res.json({content: content});
+    });
 });
 
 
