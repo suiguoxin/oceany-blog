@@ -11,7 +11,9 @@ body {
     min-height: 100%;
     position: relative;
 }
-
+/*
+ * Navbar
+ */
 .navbar .dropdown-menu{
     min-width:2rem;
     background:#4682B4;
@@ -34,54 +36,33 @@ body {
     margin: 0 0;
 }
 
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-/* Carousel base class */
-.carousel {
-    margin-bottom: 4rem;
-}
-
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-    z-index: 10;
-    bottom: 3rem;
-}
-
-/* Declare heights because of positioning of img element */
-.carousel-item {
-    height: 32rem;
-    background-color: #777;
-}
-
-.carousel-item > img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    height: 32rem;
-}
-
+/*
+ * Notification
+ */
 .alert{
     margin-bottom: 0;
 }
 
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
-.marketing .col-lg-3 {
-    margin-bottom: 1.5rem;
+/*
+ * Footer
+ */
+footer {
     text-align: center;
+    background-color: #4682B4;
+    border-top: .05rem solid yellow;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
 }
-
-.marketing h2 {
-    font-weight: normal;
+footer p:last-child {
+    margin-bottom: 0;
 }
-
-.marketing .col-lg-3 p {
-    margin-right: .75rem;
-    margin-left: .75rem;
+footer a{
+    color:rgba(255, 255, 255, 0.5);
+}
+footer a:hover{
+    color:rgba(255, 255, 255, 0.75);
 }
 
 /* RESPONSIVE CSS
@@ -119,31 +100,3 @@ body {
         font-size: 50px;
     }
 }
-
-/*
- * Footer
- */
-
-footer {
-    text-align: center;
-    background-color: #4682B4;
-    border-top: .05rem solid yellow;
-
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-}
-
-footer p:last-child {
-    margin-bottom: 0;
-}
-
-footer a{
-    color:rgba(255, 255, 255, 0.5);
-}
-
-footer a:hover{
-    color:rgba(255, 255, 255, 0.75);
-}
-
