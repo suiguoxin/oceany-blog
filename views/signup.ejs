@@ -5,45 +5,47 @@
 <div class="container">
 
     <form class="form-signup" method="post">
-        <h2 class="form-signup-heading">Please sign up</h2>
+        <h3 class="form-signup-heading">注册</h3>
 
         <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required
-                   autofocus>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <label for="email">邮箱</label>
+            <input type="email" class="form-control" id="email" name="email"
+                    <% if (!(typeof email == 'undefined')) { %>
+                   value="<%= email %>"
+                    <% } %>
+                   placeholder="hello.world@oceany.com" required autofocus>
         </div>
 
         <div class="form-group">
             <label for="name">用户名</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter user name">
+            <input type="text" class="form-control" id="name" name="name"
+                    <% if (!(typeof name == 'undefined')) { %>
+                   value="<%= name %>"
+                    <% } %>
+                   placeholder="4到10位" required>
         </div>
 
         <div class="form-group">
             <label for="password">密码</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            <input type="password" class="form-control" id="password" name="password"
+                    <% if (!(typeof password == 'undefined')) { %>
+                   value="<%= password %>"
+                    <% } %>
+                   placeholder="不少于6位" required>
         </div>
 
         <div class="form-group">
-            <label for="exampleInputPassword1">确认密码</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label for="repassword">确认密码</label>
+            <input type="password" class="form-control" id="repassword" name="repassword"
+                    <% if (!(typeof repassword == 'undefined')) { %>
+                   value="<%= repassword %>"
+                    <% } %>
+                   placeholder="不少于6位"
+                   required>
         </div>
 
-        <div class="form-group">
-            <label for="exampleInputFile">头像</label>
-            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-            <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the
-                above input. It's a bit lighter and easily wraps to a new line.
-            </small>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        <button class="btn btn-primary btn-lg btn-block my-3" type="submit">注册</button>
     </form>
-
 </div> <!-- /container -->
 
 <%- include('footer') %>
