@@ -1,18 +1,16 @@
 var express = require('express');
 var path = require('path');
 var pkg = require('./package.json');
-
 //used to acitiver req.body
 var bodyParser = require('body-parser');
 var multer = require('multer'); // v1.0.5
-var upload = multer();
-
+//config
 var config = require("config-lite")(__dirname);
-
+//session
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
-
+//routes
 var routes = require('./routes/index');
 
 var app = express();
@@ -23,6 +21,7 @@ app.use(express.static('public'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//session
 app.use(session({
     name: config.session.key,// 设置 cookie 中保存 session id 的字段名称
     secret: config.session.secret,// 通过设置 secret 来计算 hash 值并放在 cookie 中，使产生的 signedCookie 防篡改
@@ -37,7 +36,7 @@ app.use(session({
 }));
 
 app.use(flash());
-
+//userful ??
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
 

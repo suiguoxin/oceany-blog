@@ -15,10 +15,18 @@ body {
 .navbar .dropdown-menu{
     min-width:2rem;
     background:#4682B4;
+    left:-1rem;
 }
 .navbar .dropdown-item:hover{
     background:#4682B4;
     color:rgba(255, 255, 255, 0.5);
+}
+.navbar .dropdown-item{
+    color:rgba(255, 255, 255, 0.75);
+    padding: 3px 0.5rem;
+}
+.dropdown-toggle::after {
+    display:none;
 }
 
 #logo {
