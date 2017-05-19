@@ -3,7 +3,7 @@ var router = express.Router();
 
 var PostModel = require('../models/posts');
 var CommentModel = require('../models/comments');
-var MenuItemModel = require('../models/menuItem');
+var MenuItemModel = require('../models/menuItems');
 
 router.get('/', function (req, res) {
     var section = "cfd";

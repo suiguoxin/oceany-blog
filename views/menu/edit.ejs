@@ -1,0 +1,41 @@
+<%- include('../header') %>
+
+<div class="row">
+    <div class="col-2 bg-faded">
+        <%- include('../components/menu') %>
+    </div>
+    <div class="col-10">
+        <form method="post">
+            <h4>Add Menu Item</h4>
+            <div class="form-group row">
+                <label class="col-2 col-form-label" for="menu-section">Section：</label>
+                <div class="col-10">
+                    <select class="form-control" name="section" id="menu-section">
+                        <option value="cfd">CFD</option>
+                        <option value="openfoam">OpenFoam</option>
+                        <option value="softwares">Softwares</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row" id="form-group-index">
+                <label class="col-2 col-form-label" for="menu-index">Index：</label>
+                <div class="col-10">
+                    <input type="text" class="form-control" name="index" id="menu-index"
+                           placeholder="examples: 1, 2...">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label" for="menu-title">Title: </label>
+                <div class="col-10">
+                    <input class="form-control" type="text" name="title" id="menu-title">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+
+<%- include('../footer') %>
+
+<%- include('../script') %>
