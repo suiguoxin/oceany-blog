@@ -11,13 +11,13 @@ router.post('/', function (req, res) {
     console.log("Creating the new menu item...");
     var section = req.body.section;
     var index = req.body.index;
-    var name = req.body.name;
+    var title = req.body.title;
 
     // 待写入数据库的用户信息
     var menuItem = {
         section: section,
         index: index,
-        name: name
+        title:title
     };
 
     MenuItemModel.create(menuItem)

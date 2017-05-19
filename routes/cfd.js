@@ -3,15 +3,21 @@ var router = express.Router();
 
 var PostModel = require('../models/posts');
 var CommentModel = require('../models/comments');
+var MenuItemModel = require('../models/menuItem');
 
 router.get('/', function (req, res) {
     var section = "cfd";
-    PostModel.getPostsBySection(section)
-        .then(function (result) {
-            res.render('cfd/index', {
-                posts: result,
-                section: "cfd"
-            });
+
+    MenuItemModel.getMenuItemsBySection(section)
+        .then(function (menuItems) {
+            PostModel.getPostsBySection(section)
+                .then(function (result) {
+                    res.render('cfd/index', {
+                        menuItems: menuItems,
+                        posts: result,
+                        section: "cfd"
+                    });
+                });
         });
 });
 

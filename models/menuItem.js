@@ -6,7 +6,7 @@ module.exports = {
     },
     getMenuItemsBySection: function getMenuItemsBySection(section) {
         return MenuItem
-            .find({section:section})
+            .find({section: section})
             .exec();
     }
 }
