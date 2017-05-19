@@ -10,16 +10,15 @@ router.get('/', function (req, res) {
 router.get('/edit/:section', function (req, res) {
     var section = req.params.section;
 
-    console.log(section);
-
     MenuItemModel.getMenuItemsBySection(section)
         .then(function (menuItems) {
             res.render('menu/edit', {
-                menuItems:menuItems
+                menuItems: menuItems
             });
         });
 });
 
+//add a menu item from nav
 router.post('/', function (req, res) {
     console.log("Creating the new menu item...");
     var section = req.body.section;
@@ -30,7 +29,7 @@ router.post('/', function (req, res) {
     var menuItem = {
         section: section,
         index: index,
-        title:title
+        title: title
     };
 
     MenuItemModel.create(menuItem)
@@ -38,7 +37,7 @@ router.post('/', function (req, res) {
             menuItem = result.ops[0];
             req.flash('success', 'menu items created');
             //如何在字符串中间使用变量？？
-            res.redirect('/'+section);
+            res.redirect('/' + section);
         });
 });
 
@@ -52,7 +51,7 @@ router.post('/edit/:section', function (req, res) {
     var menuItem = {
         section: section,
         index: index,
-        title:title
+        title: title
     };
 
     MenuItemModel.create(menuItem)
@@ -61,6 +60,12 @@ router.post('/edit/:section', function (req, res) {
             req.flash('success', 'menu items created');
             //如何在字符串中间使用变量？？
             res.redirect('back');
+        })
+        .catch(function (e) {
+            if (e.message.match('E11000 duplicate key')) {
+                req.flash('error', "Menu item already exist");
+                return res.redirect('back');
+            }
         });
 });
 
