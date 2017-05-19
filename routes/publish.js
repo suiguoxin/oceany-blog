@@ -27,6 +27,7 @@ router.post('/', function (req, res) {
     var author = req.session.user._id;
     var title = req.body.title;
     var section = req.body.section;
+    var menuIndex = req.body.menuIndex;
     var index = req.body.index;
     var content = req.body.content;
 
@@ -35,6 +36,7 @@ router.post('/', function (req, res) {
         author: author,
         title: title,
         section: section,
+        menuIndex:menuIndex,
         index: index,
         content: content,
         pv: 0
