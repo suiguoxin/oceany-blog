@@ -1,26 +1,43 @@
 <%- include('header') %>
 
+<link href="/css/profile.css" rel="stylesheet">
 <script src="js/profile.js"></script>
 
 <div class="container">
-    <form class="form-signup col-8 offset-2 my-5" method="post" enctype="multipart/form-data">
+    <form class="form-profile col-8 offset-2 my-5" method="post" enctype="multipart/form-data">
 
-        <h2 class="form-signup-heading my-4">Personnal Profile</h2>
+        <h4 class="form-profile-heading my-4">Personnal Profile</h4>
 
         <div class="row">
             <div class="col-4">
-                <img id="avatarPreview" src="<%= user.avatar %>" class="d-flex mr-3 rounded-circle" alt="Avatar"
-                     width="100px" height="100px">
-                <input type="file" id="avatar" name="avatar" onchange=uploadAvatar()>
-                <h4 class="my-2">用户名: <%= user.name %></h4>
-                <h5 class="my-2">Email: <%= user.email %></h5>
+                <img class="d-flex mr-3 rounded-circle mx-auto d-block" id="avatarPreview" src="<%= user.avatar %>"
+                     alt="Avatar"
+                     width="150px" height="150px">
+                <label class="custom-file my-2">
+                    <input type="file" class="custom-file-input" id="avatar" name="avatar" onchange=uploadAvatar()>
+                    <span class="custom-file-control"></span>
+                </label>
             </div>
             <div class="col-7 offset-1">
-                <div class="form-group">
-                    <label for="bio">Bio:</label>
-                    <input class="form-control" type="text" id="bio" name="bio" value="<%= user.bio %>">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">用户名:</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static"><%= user.name %></p>
+                    </div>
                 </div>
-                <button class="btn btn-lg btn-primary" type="submit">保存</button>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">邮箱:</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static"><%= user.email %></p>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="bio">简介:</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" type="text" id="bio" name="bio" value="<%= user.bio %>">
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">保存</button>
             </div>
         </div>
     </form>
