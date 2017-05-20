@@ -67,12 +67,32 @@
         });
     });
 
+    //hide the menu and index when start
+    $( document ).ready(function() {
+        $('#form-group-menuIndex').hide();
+        $('#form-group-index').hide();
+    });
+
     $("#post-section").change(function () {
         var section = $('#post-section').val();
-        if (section.toLowerCase() === "cfd" || section.toLowerCase() === "openfoam") {
+        if (section.toLowerCase() === "cfd") {
+            $('#form-group-menuIndex').show();
             $('#form-group-index').show();
+            //select the menuItem
+            $('#menuIndex .menuItemCfd').show();
+            $('#menuIndex .menuItemOpenfoam').hide();
+
+        } else if (section.toLowerCase() === "openfoam") {
+            $('#form-group-menuIndex').show();
+            $('#form-group-index').show();
+            //select the menuItem
+            $('#menuIndex .menuItemOpenfoam').show();
+            $('#menuIndex .menuItemCfd').hide();
         }
-        else $('#form-group-index').hide();
+        else {
+            $('#form-group-menuIndex').hide();
+            $('#form-group-index').hide();
+        }
     });
 
 })(jQuery);

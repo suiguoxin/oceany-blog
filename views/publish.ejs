@@ -5,19 +5,27 @@
         <div class="form-group row">
             <label class="col-2 col-form-label" for="post-section">Section：</label>
             <div class="col-10">
-                <select class="form-control" name="section" id="post-section">
+                <select class="custom-select" name="section" id="post-section">
+                    <option selected>Choose the section</option>
                     <option value="cfd">CFD</option>
                     <option value="openfoam">OpenFoam</option>
                     <option value="softwares">Softwares</option>
                 </select>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" id="form-group-menuIndex">
             <label class="col-2 col-form-label" for="menuIndex">Menu :</label>
             <div class="col-10">
-                <select class="form-control" name="menuIndex" id="menuIndex">
-                    <option value="1">海洋工程环境模拟</option>
-                    <option value="2">结构载荷</option>
+                <select class="custom-select" name="menuIndex" id="menuIndex">
+                    <option selected>Choose the menu</option>
+                    <!--cfd menu-->
+                    <% menuItemsCfd.forEach(function(menuItemCfd){ %>
+                    <option class="menuItemCfd" value="<%- menuItemCfd.index %>"><%- menuItemCfd.title %></option>
+                    <% }); %>
+                    <!--openfoam menu-->
+                    <% menuItemsOpenfoam.forEach(function(menuItemFoam){ %>
+                    <option class="menuItemOpenfoam" value="<%- menuItemFoam.index %>"><%- menuItemFoam.title %></option>
+                    <% }); %>
                 </select>
             </div>
         </div>

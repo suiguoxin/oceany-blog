@@ -1,29 +1,30 @@
 <%- include('../header') %>
-
-<div class="row">
-    <div class="col-2 bg-faded">
-        <%- include('menu') %>
-    </div>
-    <div class="col-10">
-        <form method="post">
-            <h4>Add Menu Item</h4>
-            <input type="hidden" name="section" value=<%- section %>>
-            <div class="form-group row" id="form-group-index">
-                <label class="col-2 col-form-label" for="menu-index">Index：</label>
-                <div class="col-10">
-                    <input type="text" class="form-control" name="index" id="menu-index"
-                           placeholder="examples: 1, 2...">
+<div class="container">
+    <div class="row">
+        <div class="col-2 bg-faded">
+            <%- include('menu') %>
+        </div>
+        <div class="col-10">
+            <form method="post">
+                <h4>Add Menu Item</h4>
+                <input type="hidden" name="section" value=<%- section %>>
+                <div class="form-group row" id="form-group-index">
+                    <label class="col-2 col-form-label" for="menu-index">Index：</label>
+                    <div class="col-10">
+                        <input type="text" class="form-control" name="index" id="menu-index"
+                               placeholder="examples: 1, 2...">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label" for="menu-title">Title: </label>
-                <div class="col-10">
-                    <input class="form-control" type="text" name="title" id="menu-title">
+                <div class="form-group row">
+                    <label class="col-2 col-form-label" for="menu-title">Title: </label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" name="title" id="menu-title">
+                    </div>
                 </div>
-            </div>
 
-            <button type="submit" class="btn btn-primary">Save</button>
-        </form>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
     </div>
 </div>
 

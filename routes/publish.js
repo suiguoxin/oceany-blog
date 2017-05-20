@@ -16,10 +16,19 @@ var client = qn.create({
 });
 
 var PostModel = require('../models/posts');
+var MenuItemModel = require('../models/menuItems');
 
 router.get('/', function (req, res) {
-    res.render('publish', {
-    });
+    Promise.all([
+        MenuItemModel.getMenuItemsBySection("cfd"),
+        MenuItemModel.getMenuItemsBySection("openfoam")
+    ])
+        .then(function (result) {
+            res.render('publish', {
+                menuItemsCfd: result[0],
+                menuItemsOpenfoam: result[1]
+            });
+        });
 });
 
 router.post('/', function (req, res) {
