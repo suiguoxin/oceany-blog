@@ -3,14 +3,20 @@ var router = express.Router();
 
 var PostModel = require('../models/posts');
 var CommentModel = require('../models/comments');
+var MenuItemModel = require('../models/menuItems');
 
 router.get('/', function (req, res) {
     var section = "openfoam";
-    PostModel.getPostsBySection(section)
+
+    Promise.all([
+        MenuItemModel.getMenuItemsBySection(section),
+        PostModel.getPostsBySection(section)
+    ])
         .then(function (result) {
-            res.render('openfoam/index', {
-                posts: result,
-                section: "openfoam"
+            res.render(section + '/index', {
+                menuItems: result[0],
+                posts: result[1],
+                section: section
             });
         });
 });
@@ -19,23 +25,21 @@ router.get('/:postId', function (req, res) {
     var postId = req.params.postId;
     var section = "openfoam";
 
-    PostModel.getPostsBySection(section)
+    Promise.all([
+        MenuItemModel.getMenuItemsBySection(section),
+        PostModel.getPostsBySection(section),
+        PostModel.getPostById(postId),
+        CommentModel.getComments(postId),
+        PostModel.incPv(postId)
+    ])
         .then(function (result) {
-            var posts = result;
-            Promise.all([
-                PostModel.getPostById(postId),
-                CommentModel.getComments(postId),
-                PostModel.incPv(postId)
-            ])
-                .then(function (result) {
-                    var post = result[0];
-                    var comments = result[1];
-                    res.render('openfoam/post', {
-                        posts: posts,
-                        post: post,
-                        comments: comments
-                    });
-                });
+            res.render(section + '/post', {
+                section: section,
+                menuItems: result[0],
+                posts: result[1],
+                post: result[2],
+                comments: result[3]
+            });
         });
 });
 

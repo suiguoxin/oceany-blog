@@ -13,6 +13,7 @@ router.get('/edit/:section', function (req, res) {
     MenuItemModel.getMenuItemsBySection(section)
         .then(function (menuItems) {
             res.render('menu/edit', {
+                section:section,
                 menuItems: menuItems
             });
         });

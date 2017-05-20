@@ -1,0 +1,10 @@
+<div>
+    <h5 class="ml-4">Index</h5>
+</div>
+<ul class="nav flex-column">
+    <% menuItems.forEach(function (menuItem) { %>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#basic"><%- menuItem.index %> <%- menuItem.title %></a>
+    </li>
+    <% }) %>
+</ul>
