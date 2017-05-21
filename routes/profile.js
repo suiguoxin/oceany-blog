@@ -41,7 +41,6 @@ router.post('/', uploadMemory.single('avatar'), function (req, res) {
 
 router.post('/uploadAvatar', uploadMemory.single('avatar'), function (req, res) {
     console.log(req.file);
-    console.log(req.body);
 
     var userId = req.session.user._id;
     var avatar = req.file;
