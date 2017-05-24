@@ -1,14 +1,14 @@
-var signUpRouter = require('./signup');
-var loginRouter = require('./login');
-var logoutRouter = require('./logout');
-var profileRouter = require('./profile');
-var cfdRouter = require('./cfd');
-var openfoamRouter = require('./openfoam');
-var softwaresRouter = require('./softwares');
-var questionsRouter = require('./questions');
-var publishRouter = require('./publish');
-var menuRouter = require('./menu');
-var aboutRouter = require('./about');
+let signUpRouter = require('./signup');
+let loginRouter = require('./login');
+let logoutRouter = require('./logout');
+let profileRouter = require('./profile');
+let cfdRouter = require('./cfd');
+let openfoamRouter = require('./openfoam');
+let softwaresRouter = require('./softwares');
+let questionsRouter = require('./questions');
+let publishRouter = require('./publish');
+let menuRouter = require('./menu');
+let aboutRouter = require('./about');
 
 module.exports = function (app) {
     app.get('/', function (req, res) {

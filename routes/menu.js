@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 
-var MenuItemModel = require('../models/menuItems');
+let MenuItemModel = require('../models/menuItems');
 
 router.get('/:section', function (req, res) {
-    var section = req.params.section;
+    let section = req.params.section;
 
     MenuItemModel.getMenuItemsBySection(section)
         .then(function (menuItems) {
@@ -17,12 +17,12 @@ router.get('/:section', function (req, res) {
 
 router.post('/:section', function (req, res) {
     console.log("Creating the new menu item...");
-    var section = req.body.section;
-    var index = req.body.index;
-    var title = req.body.title;
+    let section = req.body.section;
+    let index = req.body.index;
+    let title = req.body.title;
 
     // 待写入数据库的用户信息
-    var menuItem = {
+    let menuItem = {
         section: section,
         index: index,
         title: title

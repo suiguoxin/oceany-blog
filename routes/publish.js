@@ -1,12 +1,12 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 //multer
-var multer = require('multer');
-var memoryStorage = multer.memoryStorage();
-var uploadMemory = multer({storage: memoryStorage});
+let multer = require('multer');
+let memoryStorage = multer.memoryStorage();
+let uploadMemory = multer({storage: memoryStorage});
 //qiniu
-var qn = require('qn');
-var client = qn.create({
+let qn = require('qn');
+let client = qn.create({
     accessKey: 'IThkAny7wzlPGCR2pcJT8IrWkdes0Ic7PR38OwoQ',
     secretKey: '4lUiAwT3jymK85eFu85PboWTjuv6wLM8wMO8oCEs',
     bucket: 'oceany',
@@ -15,8 +15,8 @@ var client = qn.create({
     uploadURL: 'http://up-z2.qiniu.com/' // the app outside of China
 });
 
-var PostModel = require('../models/posts');
-var MenuItemModel = require('../models/menuItems');
+let PostModel = require('../models/posts');
+let MenuItemModel = require('../models/menuItems');
 
 router.get('/', function (req, res) {
     Promise.all([
@@ -33,15 +33,15 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
     console.log("Pulishing the new post...");
-    var author = req.session.user._id;
-    var title = req.body.title;
-    var section = req.body.section;
-    var menuIndex = req.body.menuIndex;
-    var index = req.body.index;
-    var content = req.body.content;
+    let author = req.session.user._id;
+    let title = req.body.title;
+    let section = req.body.section;
+    let menuIndex = req.body.menuIndex;
+    let index = req.body.index;
+    let content = req.body.content;
 
     // 待写入数据库的用户信息
-    var post = {
+    let post = {
         author: author,
         title: title,
         section: section,
@@ -55,15 +55,14 @@ router.post('/', function (req, res) {
         .then(function (result) {
             post = result.ops[0];
             req.flash('success', 'post-components succeed');
-            //如何在字符串中间使用变量？？
-            res.redirect('/'+section+'/'+post._id);
+            res.redirect(`/${section}/${post._id}`)
         });
 });
 
 router.post('/uploadPost', uploadMemory.single('postFile'), function (req, res) {
     console.log("uploading post in router...");
 
-    var content = req.file.buffer.toString();
+    let content = req.file.buffer.toString();
 
     res.json({content: content});
 });
@@ -71,16 +70,15 @@ router.post('/uploadPost', uploadMemory.single('postFile'), function (req, res) 
 router.post('/uploadImg', uploadMemory.single('postImg'), function (req, res) {
     console.log(req.file);
 
-    var postImg = req.file;
+    let postImg = req.file;
 
     client.upload(postImg.buffer, {key: postImg.fieldname+ '-' + Date.now()}, function (err, result) {
-        var url = 'http://oq29i4a0h.bkt.clouddn.com/';
-        var src = url + result.key;
-        var content = "![" + postImg.originalname + "](" + src + ")";
+        let url = 'http://oq29i4a0h.bkt.clouddn.com/';
+        let src = url + result.key;
+        let content = "![" + postImg.originalname + "](" + src + ")";
         //return img src to ajax
         res.json({content: content});
     });
 });
-
 
 module.exports = router;

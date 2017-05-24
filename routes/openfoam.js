@@ -1,19 +1,19 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 
-var PostModel = require('../models/posts');
-var CommentModel = require('../models/comments');
-var MenuItemModel = require('../models/menuItems');
+let PostModel = require('../models/posts');
+let CommentModel = require('../models/comments');
+let MenuItemModel = require('../models/menuItems');
 
 router.get('/', function (req, res) {
-    var section = "openfoam";
+    let section = "openfoam";
 
     Promise.all([
         MenuItemModel.getMenuItemsBySection(section),
         PostModel.getPostsBySection(section)
     ])
         .then(function (result) {
-            res.render(section + '/index', {
+            res.render(`${section}/index`, {
                 menuItems: result[0],
                 posts: result[1],
                 section: section
@@ -22,8 +22,8 @@ router.get('/', function (req, res) {
 });
 
 router.get('/:postId', function (req, res) {
-    var postId = req.params.postId;
-    var section = "openfoam";
+    let postId = req.params.postId;
+    let section = "openfoam";
 
     Promise.all([
         MenuItemModel.getMenuItemsBySection(section),
@@ -33,7 +33,7 @@ router.get('/:postId', function (req, res) {
         PostModel.incPv(postId)
     ])
         .then(function (result) {
-            res.render(section + '/post', {
+            res.render(`${section}/post`, {
                 section: section,
                 menuItems: result[0],
                 posts: result[1],

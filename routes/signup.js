@@ -1,19 +1,19 @@
-var express = require('express');
-var router = express.Router();
-var bcrypt = require('bcrypt');
+let express = require('express');
+let router = express.Router();
+let bcrypt = require('bcrypt');
 const saltRounds = 12;
 
-var UserModel = require('../models/users');
+let UserModel = require('../models/users');
 
 router.get('/', function (req, res) {
     res.render('signup', {});
 });
 
 router.post('/', function (req, res) {
-    var email = req.body.email;
-    var name = req.body.name;
-    var password = req.body.password;
-    var repassword = req.body.repassword;
+    let email = req.body.email;
+    let name = req.body.name;
+    let password = req.body.password;
+    let repassword = req.body.repassword;
 
     try {
         if (!(name.length >= 4 && name.length <= 10)) {
@@ -37,7 +37,7 @@ router.post('/', function (req, res) {
 
     bcrypt.hash(password, saltRounds, function (err, password) {
         // 待写入数据库的用户信息
-        var user = {
+        let user = {
             email: email,
             name: name,
             password: password

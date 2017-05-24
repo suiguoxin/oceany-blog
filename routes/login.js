@@ -1,20 +1,20 @@
-var express = require('express');
-var router = express.Router();
-var bcrypt = require('bcrypt');
+let express = require('express');
+let router = express.Router();
+let bcrypt = require('bcrypt');
 
-var UserModel = require('../models/users');
+let UserModel = require('../models/users');
 
 router.get('/', function (req, res) {
     res.render('login');
 });
 
 router.post('/', function (req, res) {
-    var name = req.body.name;
-    var password = req.body.password;
+    let name = req.body.name;
+    let password = req.body.password;
 
     UserModel.getUserByname(name)
         .then(function (result) {
-            var user = result;
+            let user = result;
             if (!user) {
                 req.flash('error', 'user name does not exist');
                 return res.redirect('back');

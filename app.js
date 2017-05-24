@@ -1,19 +1,19 @@
-var express = require('express');
-var path = require('path');
-var pkg = require('./package.json');
+let express = require('express');
+let path = require('path');
+let pkg = require('./package.json');
 //used to acitiver req.body
-var bodyParser = require('body-parser');
-var multer = require('multer'); // v1.0.5
+let bodyParser = require('body-parser');
+let multer = require('multer'); // v1.0.5
 //config
-var config = require("config-lite")(__dirname);
+let config = require("config-lite")(__dirname);
 //session
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
-var flash = require('connect-flash');
+let session = require('express-session');
+let MongoStore = require('connect-mongo')(session);
+let flash = require('connect-flash');
 //routes
-var routes = require('./routes/index');
+let routes = require('./routes/index');
 
-var app = express();
+let app = express();
 
 app.use(express.static('public'));
 
@@ -59,7 +59,7 @@ routes(app);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
+    let err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
@@ -77,5 +77,5 @@ app.use(function (err, req, res, next) {
 
 const port = process.env.PORT || config.port;
 app.listen(port, function () {
-    console.log('%s listening on port %s!', pkg.name, port);
+    console.log(`${pkg.name} listening on port ${port}!`);
 });
