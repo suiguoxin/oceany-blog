@@ -39,4 +39,8 @@ router.post('/', function (req, res) {
         });
 });
 
+router.get('/github', function (req, res) {
+    res.redirect('http://github.com')
+});
+
 module.exports = router;
