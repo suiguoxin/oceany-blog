@@ -2,6 +2,7 @@ let signUpRouter = require('./signup');
 let loginRouter = require('./login');
 let logoutRouter = require('./logout');
 let profileRouter = require('./profile');
+let booksRouter = require('./books');
 let cfdRouter = require('./cfd');
 let openfoamRouter = require('./openfoam');
 let softwaresRouter = require('./softwares');
@@ -22,6 +23,7 @@ module.exports = function (app) {
     app.use('/login', loginRouter);
     app.use('/logout', logoutRouter);
     app.use('/profile', profileRouter);
+    app.use('/books', booksRouter);
     app.use('/cfd', cfdRouter);
     app.use('/openfoam', openfoamRouter);
     app.use('/softwares', softwaresRouter);
