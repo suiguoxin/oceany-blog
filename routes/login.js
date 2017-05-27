@@ -2,40 +2,35 @@ let express = require('express');
 let router = express.Router();
 let bcrypt = require('bcrypt');
 
-let UserModel = require('../models/users');
+let LocalAuthModel = require('../models/localAuths');
 
 router.get('/', function (req, res) {
     res.render('login');
 });
 
 router.post('/', function (req, res) {
-    let name = req.body.name;
+    let username = req.body.username;
     let password = req.body.password;
 
-    UserModel.getUserByname(name)
-        .then(function (result) {
-            let user = result;
-            if (!user) {
-                req.flash('error', 'user name does not exist');
+    LocalAuthModel.getLocalAuthByUsername(username)
+        .then(function (localAuth) {
+            if (!localAuth) {
+                req.flash('error', 'username does not exist');
                 return res.redirect('back');
             }
+            //bcrypt check hash in mode async
+            bcrypt.compare(password, localAuth.password)
+                .then(function (result) {
+                    if (result == false) {
+                        req.flash('error', 'password is wrong');
+                        return res.redirect('back');
+                    }
+                    req.session.user = localAuth.user_id;
+                    req.flash('success', 'log in succeed');
 
-            // why can't use async mode
-            // bcrypt.compare(password, user.password, function(err, res) {
-            //     if(res===false){
-            //         req.flash('error', 'password is wrong');
-            //         return res.redirect('back');
-            //     }
-            // });
-            if (!bcrypt.compareSync(password, user.password)) {
-                req.flash('error', 'password is wrong');
-                return res.redirect('back');
-            }
+                    res.redirect('index');
+                });
 
-            req.session.user = user;
-            req.flash('success', 'log in succeed');
-
-            res.redirect('index');
         });
 });
 

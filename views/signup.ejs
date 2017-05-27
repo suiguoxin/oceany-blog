@@ -17,10 +17,10 @@
         </div>
 
         <div class="form-group">
-            <label for="name">用户名</label>
-            <input type="text" class="form-control" id="name" name="name"
-                    <% if (!(typeof name == 'undefined')) { %>
-                   value="<%= name %>"
+            <label for="username">用户名</label>
+            <input type="text" class="form-control" id="username" name="username"
+                    <% if (!(typeof username == 'undefined')) { %>
+                   value="<%= username %>"
                     <% } %>
                    placeholder="4到10位" required>
         </div>
@@ -31,7 +31,7 @@
                     <% if (!(typeof password == 'undefined')) { %>
                    value="<%= password %>"
                     <% } %>
-                   placeholder="不少于6位" required>
+                   placeholder="不少于4位" required>
         </div>
 
         <div class="form-group">
