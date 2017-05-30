@@ -8,7 +8,9 @@
            href="#cfd<%- menuItem.index %>"><%- menuItem.index %> <%- menuItem.title %></a>
         <div class="collapse" id="cfd<%- menuItem.index %>">
             <% posts.forEach(function (post) { if (post.menuIndex == menuItem.index) { %>
-            <div class="nav-link ml-3 updatePost" data-url="/posts/<%- section %>/<%= post._id %>"><%- menuItem.index %>.<%- post.index %> <%- post.title %></div>
+            <a class="nav-link ml-3 updatePost" href="" data-url="/posts/<%- section %>/<%= post._id %>">
+                <%- menuItem.index %>.<%- post.index %> <%- post.title %>
+            </a>
             <% }}) %>
         </div>
     </li>
