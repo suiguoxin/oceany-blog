@@ -1,0 +1,24 @@
+#versions {
+    padding: 0.5rem 2rem;
+    margin: 0 0;
+    height: 36rem;
+    overflow: scroll;
+}
+
+.collapse.show {
+    visibility: visible;
+    display: block;
+}
+
+.collapsing.width {
+    position: relative;
+    width: 0;
+    height: auto;
+    overflow: hidden;
+    -webkit-transition-property: width, visibility;
+    transition-property: width, visibility;
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+    -webkit-transition-timing-function: ease;
+    transition-timing-function: ease;
+}
