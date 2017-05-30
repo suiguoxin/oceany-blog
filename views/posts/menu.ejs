@@ -1,0 +1,16 @@
+<div>
+    <h5 class="ml-4">Index <a href="/menu/<%- section %>"><span class="fa fa-pencil-square-o"></span></a></h5>
+</div>
+<ul class="nav flex-column">
+    <% menuItems.forEach(function (menuItem) { %>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse"
+           href="#cfd<%- menuItem.index %>"><%- menuItem.index %> <%- menuItem.title %></a>
+        <div class="collapse" id="cfd<%- menuItem.index %>">
+            <% posts.forEach(function (post) { if (post.menuIndex == menuItem.index) { %>
+            <div class="nav-link ml-3 updatePost" data-url="/posts/<%- section %>/<%= post._id %>"><%- menuItem.index %>.<%- post.index %> <%- post.title %></div>
+            <% }}) %>
+        </div>
+    </li>
+    <% }) %>
+</ul>
