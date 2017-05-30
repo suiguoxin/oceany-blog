@@ -7,15 +7,15 @@
             if (document.selection) {
                 //For browsers like Internet Explorer
                 this.focus();
-                var sel = document.selection.createRange();
+                let sel = document.selection.createRange();
                 sel.text = myValue;
                 this.focus();
             }
             else if (this.selectionStart || this.selectionStart == '0') {
                 //For browsers like Firefox and Webkit based
-                var startPos = this.selectionStart;
-                var endPos = this.selectionEnd;
-                var scrollTop = this.scrollTop;
+                let startPos = this.selectionStart;
+                let endPos = this.selectionEnd;
+                let scrollTop = this.scrollTop;
                 this.value = this.value.substring(0, startPos) + myValue + this.value.substring(endPos, this.value.length);
                 this.focus();
                 this.selectionStart = startPos + myValue.length;
@@ -29,8 +29,8 @@
     };
 
     $("#post-img").change(function () {
-        var formData = new FormData();
-        var postImg = document.getElementById("post-img").files[0];
+        let formData = new FormData();
+        let postImg = document.getElementById("post-img").files[0];
         formData.append("postImg", postImg);
         $.ajax({
             url: '/publish/uploadImg',
@@ -47,9 +47,12 @@
         });
     });
 
+    // add line number to textarea
+    $('#post-content').numberedtextarea();
+
     $("#post-file").change(function () {
-        var formData = new FormData();
-        var postFile = document.getElementById("post-file").files[0];
+        let formData = new FormData();
+        let postFile = document.getElementById("post-file").files[0];
         formData.append("postFile", postFile);
 
         $.ajax({
@@ -68,13 +71,13 @@
     });
 
     //hide the menu and index when start
-    $( document ).ready(function() {
+    $(document).ready(function () {
         $('#form-group-menuIndex').hide();
         $('#form-group-index').hide();
     });
 
     $("#post-section").change(function () {
-        var section = $('#post-section').val();
+        let section = $('#post-section').val();
         if (section.toLowerCase() === "cfd") {
             $('#form-group-menuIndex').show();
             $('#form-group-index').show();

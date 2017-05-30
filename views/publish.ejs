@@ -1,5 +1,7 @@
 <%- include header %>
 
+<link href="css/publish.css" rel="stylesheet">
+
 <div class="container my-3" style="width: 60%">
     <form method="post">
         <div class="form-group row">
@@ -24,7 +26,8 @@
                     <% }); %>
                     <!--openfoam menu-->
                     <% menuItemsOpenfoam.forEach(function(menuItemFoam){ %>
-                    <option class="menuItemOpenfoam" value="<%- menuItemFoam.index %>"><%- menuItemFoam.title %></option>
+                    <option class="menuItemOpenfoam"
+                            value="<%- menuItemFoam.index %>"><%- menuItemFoam.title %></option>
                     <% }); %>
                 </select>
             </div>
@@ -64,6 +67,7 @@
 
 <%- include footer %>
 
+<script src="js/jquery.numberedtextarea.js"></script>
 <script src="js/publish.js"></script>
 
 <%- include('script') %>
