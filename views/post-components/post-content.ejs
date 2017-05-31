@@ -8,12 +8,13 @@
                 <span>评论(<%= post.commentsCount %>)</span>
                 <% if(user && post.author._id && user._id.toString() === post.author._id.toString() ) { %>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown">
                         Edit
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/cfd/<%= post._id %>/edit">edit</a>
-                        <a class="dropdown-item" href="/cfd/<%= post._id %>/delete">delete</a>
+                        <a class="dropdown-item" href="/posts/<%= section %>/<%= post._id %>/edit">edit</a>
+                        <a class="dropdown-item" href="/posts/<%= section %>/<%= post._id %>/delete">delete</a>
                     </div>
                 </div>
                 <% } %>

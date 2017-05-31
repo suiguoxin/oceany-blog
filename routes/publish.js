@@ -55,7 +55,7 @@ router.post('/', function (req, res) {
         .then(function (result) {
             post = result.ops[0];
             req.flash('success', 'post-components succeed');
-            res.redirect(`/${section}/${post._id}`)
+            res.redirect(`posts/${section}/${post._id}`)
         });
 });
 

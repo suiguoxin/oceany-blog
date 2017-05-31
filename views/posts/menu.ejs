@@ -6,9 +6,9 @@
     <li class="nav-item">
         <a class="nav-link" data-toggle="collapse"
            href="#cfd<%- menuItem.index %>"><%- menuItem.index %> <%- menuItem.title %></a>
-        <div class="collapse" id="cfd<%- menuItem.index %>">
+        <div class="collapse show" id="cfd<%- menuItem.index %>">
             <% posts.forEach(function (post) { if (post.menuIndex == menuItem.index) { %>
-            <a class="nav-link ml-3 updatePost" href="" data-url="/posts/<%- section %>/<%= post._id %>">
+            <a class="nav-link ml-3 updatePost" href="/posts/<%- section %>/<%= post._id %>">
                 <%- menuItem.index %>.<%- post.index %> <%- post.title %>
             </a>
             <% }}) %>

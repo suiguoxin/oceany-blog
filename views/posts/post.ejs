@@ -16,14 +16,12 @@
                 <i class="fa fa-navicon fa-lg"></i>
             </a>
             <div id="content">
-                <%- section %>
+                <%- include('../post-components/post-content') %>
+                <%- include('../post-components/comments') %>
             </div>
         </div>
     </div>
 </div>
 
 <%- include('../footer') %>
-
-<!--<script src="/js/posts.js"></script>-->
-
 <%- include('../script') %>
