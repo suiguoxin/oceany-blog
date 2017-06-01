@@ -3,7 +3,6 @@ let loginRouter = require('./login');
 let logoutRouter = require('./logout');
 let profileRouter = require('./profile');
 let postsRouter = require('./posts');
-let cfdRouter = require('./cfd');
 let softwaresRouter = require('./softwares');
 let questionsRouter = require('./questions');
 let publishRouter = require('./publish');
@@ -23,7 +22,6 @@ module.exports = function (app) {
     app.use('/logout', logoutRouter);
     app.use('/profile', profileRouter);
     app.use('/posts', postsRouter);
-    app.use('/cfd', cfdRouter);
     app.use('/softwares', softwaresRouter);
     app.use('/questions', questionsRouter);
     app.use('/publish', publishRouter);

@@ -107,4 +107,33 @@ router.get('/:section/:postId/delete', function (req, res) {
         });
 });
 
+router.post('/:section/:postId/comment', function (req, res) {
+    let postId = req.params.postId;
+    let authorId = req.session.user._id;
+    let content = req.body.content;
+
+    let comment = {
+        author: authorId,
+        content: content,
+        postId: postId
+    };
+
+    CommentModel.create(comment)
+        .then(function () {
+            req.flash('success', 'post-components comment succeed');
+            res.redirect('back');
+        });
+});
+
+router.get('/:section/:postId/comments/:commentId/delete', function (req, res) {
+    let commentId = req.params.commentId;
+    let authorId = req.session.user._id;
+
+    CommentModel.deleteCommentById(commentId, authorId)
+        .then(function () {
+            req.flash('success', 'delete comment succeed');
+            res.redirect('back');
+        });
+});
+
 module.exports = router;

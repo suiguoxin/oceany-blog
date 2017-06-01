@@ -14,13 +14,13 @@
             </div>
             <% if (user && comment.author._id && user._id.toString() === comment.author._id.toString()) { %>
             <div>
-                <a href="/cfd/<%= post._id %>/comments/<%= comment._id %>/delete">删除</a>
+                <a href="/posts/<%= section %>/<%= post._id %>/comments/<%= comment._id %>/delete">删除</a>
             </div>
             <% } %>
         </div>
         <% }) %>
         <% if (user) { %>
-        <form method="post" action="/cfd/<%= post._id %>/comment">
+        <form method="post" action="/posts/<%= section %>/<%= post._id %>/comment">
             <div class="form-group">
                 <textarea class="form-control" name="content"></textarea>
             </div>
