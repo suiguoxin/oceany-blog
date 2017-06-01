@@ -77,20 +77,18 @@
     });
 
     $("#post-section").change(function () {
-        let section = $('#post-section').val();
-        if (section.toLowerCase() === "cfd") {
+        let section = $('#post-section').val().toLowerCase();
+        if (section !== "news") {
             $('#form-group-menuIndex').show();
             $('#form-group-index').show();
-            //select the menuItem
-            $('#menuIndex .menuItemCfd').show();
-            $('#menuIndex .menuItemOpenfoam').hide();
 
-        } else if (section.toLowerCase() === "openfoam") {
-            $('#form-group-menuIndex').show();
-            $('#form-group-index').show();
             //select the menuItem
-            $('#menuIndex .menuItemOpenfoam').show();
-            $('#menuIndex .menuItemCfd').hide();
+            $('#menuIndex .menuItem').hide();
+            //transfer the first letter to uppercase
+            section = section.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                return letter.toUpperCase();
+            });
+            $(`#menuIndex .menuItem${section}`).show();
         }
         else {
             $('#form-group-menuIndex').hide();

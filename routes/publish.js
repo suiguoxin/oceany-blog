@@ -20,13 +20,19 @@ let MenuItemModel = require('../models/menuItems');
 
 router.get('/', function (req, res) {
     Promise.all([
-        MenuItemModel.getMenuItemsBySection("cfd"),
-        MenuItemModel.getMenuItemsBySection("openfoam")
+        MenuItemModel.getMenuItemsBySection("openfoam"),
+        MenuItemModel.getMenuItemsBySection("palabos"),
+        MenuItemModel.getMenuItemsBySection("openlb"),
+        MenuItemModel.getMenuItemsBySection("reef-3d"),
+        MenuItemModel.getMenuItemsBySection("fluidty"),
+        MenuItemModel.getMenuItemsBySection("nemoh"),
+        MenuItemModel.getMenuItemsBySection("hos")
     ])
         .then(function (result) {
             res.render('publish', {
-                menuItemsCfd: result[0],
-                menuItemsOpenfoam: result[1]
+                menuItemsOpenfoam: result[0],
+                menuItemsPalabos: result[1],
+                menuItemsOpenlb: result[1]
             });
         });
 });
@@ -45,7 +51,7 @@ router.post('/', function (req, res) {
         author: author,
         title: title,
         section: section,
-        menuIndex:menuIndex,
+        menuIndex: menuIndex,
         index: index,
         content: content,
         pv: 0
@@ -72,7 +78,7 @@ router.post('/uploadImg', uploadMemory.single('postImg'), function (req, res) {
 
     let postImg = req.file;
 
-    client.upload(postImg.buffer, {key: postImg.fieldname+ '-' + Date.now()}, function (err, result) {
+    client.upload(postImg.buffer, {key: postImg.fieldname + '-' + Date.now()}, function (err, result) {
         let url = 'http://oq29i4a0h.bkt.clouddn.com/';
         let src = url + result.key;
         let content = "![" + postImg.originalname + "](" + src + ")";

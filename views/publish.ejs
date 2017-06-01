@@ -9,9 +9,12 @@
             <div class="col-10">
                 <select class="custom-select" name="section" id="post-section">
                     <option selected>Choose the section</option>
-                    <option value="cfd">CFD</option>
                     <option value="openfoam">OpenFoam</option>
-                    <option value="softwares">Softwares</option>
+                    <option value="palabos">Palabos</option>
+                    <option value="openlb">Openlb</option>
+                    <option value="reef-3d">REEF-3D</option>
+                    <option value="fluidty">FLUIDTY</option>
+                    <option value="nemoh">NemoH</option>
                 </select>
             </div>
         </div>
@@ -20,14 +23,15 @@
             <div class="col-10">
                 <select class="custom-select" name="menuIndex" id="menuIndex">
                     <option selected>Choose the menu</option>
-                    <!--cfd menu-->
-                    <% menuItemsCfd.forEach(function(menuItemCfd){ %>
-                    <option class="menuItemCfd" value="<%- menuItemCfd.index %>"><%- menuItemCfd.title %></option>
-                    <% }); %>
                     <!--openfoam menu-->
                     <% menuItemsOpenfoam.forEach(function(menuItemFoam){ %>
-                    <option class="menuItemOpenfoam"
+                    <option class="menuItem menuItemOpenfoam"
                             value="<%- menuItemFoam.index %>"><%- menuItemFoam.title %></option>
+                    <% }); %>
+                    <!--palabos menu-->
+                    <% menuItemsPalabos.forEach(function(menuItemPalabos){ %>
+                    <option class="menuItem menuItemPalabos"
+                            value="<%- menuItemPalabos.index %>"><%- menuItemPalabos.title %></option>
                     <% }); %>
                 </select>
             </div>
