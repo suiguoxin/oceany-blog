@@ -19,26 +19,23 @@ let PostModel = require('../models/posts');
 let MenuItemModel = require('../models/menuItems');
 
 router.get('/', function (req, res) {
-    Promise.all([
-        MenuItemModel.getMenuItemsBySection("openfoam"),
-        MenuItemModel.getMenuItemsBySection("palabos"),
-        MenuItemModel.getMenuItemsBySection("openlb"),
-        MenuItemModel.getMenuItemsBySection("reef-3d"),
-        MenuItemModel.getMenuItemsBySection("fluidty"),
-        MenuItemModel.getMenuItemsBySection("nemoh"),
-        MenuItemModel.getMenuItemsBySection("hos")
-    ])
+    res.render('publish/index', {});
+});
+
+router.get('/getMenuIndex/:section', function (req, res) {
+    let section = req.params.section;
+
+    MenuItemModel.getMenuItemsBySection(section)
         .then(function (result) {
-            res.render('publish', {
-                menuItemsOpenfoam: result[0],
-                menuItemsPalabos: result[1],
-                menuItemsOpenlb: result[1]
-            });
-        });
+            res.render('publish/menuIndex', {
+                menuItems: result
+            }, function (err, html) {
+                res.send(html);
+            })
+        })
 });
 
 router.post('/', function (req, res) {
-    console.log("Pulishing the new post...");
     let author = req.session.user._id;
     let title = req.body.title;
     let section = req.body.section;

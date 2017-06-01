@@ -70,30 +70,19 @@
         });
     });
 
-    //hide the menu and index when start
-    $(document).ready(function () {
-        $('#form-group-menuIndex').hide();
-        $('#form-group-index').hide();
-    });
-
+    //use ajax to refresh menuIndex
     $("#post-section").change(function () {
-        let section = $('#post-section').val().toLowerCase();
-        if (section !== "news") {
-            $('#form-group-menuIndex').show();
-            $('#form-group-index').show();
+        let section = $('#post-section').val();
+        let url = `/publish/getMenuIndex/${section}`;
 
-            //select the menuItem
-            $('#menuIndex .menuItem').hide();
-            //transfer the first letter to uppercase
-            section = section.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-                return letter.toUpperCase();
-            });
-            $(`#menuIndex .menuItem${section}`).show();
-        }
-        else {
-            $('#form-group-menuIndex').hide();
-            $('#form-group-index').hide();
-        }
+        $.ajax({
+            method: "get",
+            url: url
+        }).done(function (result) {
+            //set menuIndex
+            $("#menuIndex").html(result);
+        });
+
     });
 
 })(jQuery);

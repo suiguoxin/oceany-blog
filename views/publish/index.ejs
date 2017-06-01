@@ -1,6 +1,6 @@
-<%- include header %>
+<%- include('../header') %>
 
-<link href="css/publish.css" rel="stylesheet">
+<link href="/css/publish.css" rel="stylesheet">
 
 <div class="container my-3" style="width: 60%">
     <form method="post">
@@ -12,37 +12,15 @@
                     <option value="openfoam">OpenFoam</option>
                     <option value="palabos">Palabos</option>
                     <option value="openlb">Openlb</option>
-                    <option value="reef-3d">REEF-3D</option>
+                    <option value="reef3d">REEF-3D</option>
                     <option value="fluidty">FLUIDTY</option>
                     <option value="nemoh">NemoH</option>
                 </select>
             </div>
         </div>
-        <div class="form-group row" id="form-group-menuIndex">
-            <label class="col-2 col-form-label" for="menuIndex">Menu :</label>
-            <div class="col-10">
-                <select class="custom-select" name="menuIndex" id="menuIndex">
-                    <option selected>Choose the menu</option>
-                    <!--openfoam menu-->
-                    <% menuItemsOpenfoam.forEach(function(menuItemFoam){ %>
-                    <option class="menuItem menuItemOpenfoam"
-                            value="<%- menuItemFoam.index %>"><%- menuItemFoam.title %></option>
-                    <% }); %>
-                    <!--palabos menu-->
-                    <% menuItemsPalabos.forEach(function(menuItemPalabos){ %>
-                    <option class="menuItem menuItemPalabos"
-                            value="<%- menuItemPalabos.index %>"><%- menuItemPalabos.title %></option>
-                    <% }); %>
-                </select>
-            </div>
-        </div>
-        <div class="form-group row" id="form-group-index">
-            <label class="col-2 col-form-label" for="post-index">Index：</label>
-            <div class="col-10">
-                <input type="text" class="form-control" name="index" id="post-index"
-                       placeholder="examples: 1, 2, ...">
-            </div>
-        </div>
+
+        <div id="menuIndex"></div>
+
         <div class="form-group row">
             <label class="col-2 col-form-label" for="post-title">标题</label>
             <div class="col-10">
@@ -69,9 +47,9 @@
     </form>
 </div>
 
-<%- include footer %>
+<%- include('../footer') %>
 
-<script src="js/jquery.numberedtextarea.js"></script>
-<script src="js/publish.js"></script>
+<script src="/js/jquery.numberedtextarea.js"></script>
+<script src="/js/publish.js"></script>
 
-<%- include('script') %>
+<%- include('../script') %>

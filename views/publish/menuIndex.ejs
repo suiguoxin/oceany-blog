@@ -1,0 +1,21 @@
+<div class="form-group row" id="form-group-menuIndex">
+    <label class="col-2 col-form-label" for="menuIndex">Menu :</label>
+    <div class="col-10">
+        <select class="custom-select" name="menuIndex" id="menuIndex">
+            <option selected>Choose the menu</option>
+            <!--menu-->
+            <% menuItems.forEach(function(menuItem){ %>
+            <option class="menuItem menuItemOpenfoam"
+                    value="<%- menuItem.index %>"><%- menuItem.title %></option>
+            <% }); %>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row" id="form-group-index">
+    <label class="col-2 col-form-label" for="post-index">Index：</label>
+    <div class="col-10">
+        <input type="text" class="form-control" name="index" id="post-index"
+               placeholder="examples: 1, 2, ...">
+    </div>
+</div>
