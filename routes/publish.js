@@ -17,11 +17,13 @@ let client = qn.create({
 
 let PostModel = require('../models/posts');
 let MenuItemModel = require('../models/menuItems');
+let checkLogin = require('../middlewares/check').checkLogin;
 
-router.get('/', function (req, res) {
+router.get('/', checkLogin, function (req, res) {
     res.render('publish/index', {});
 });
 
+//for ajax use
 router.get('/getMenuIndex/:section', function (req, res) {
     let section = req.params.section;
 
@@ -35,7 +37,7 @@ router.get('/getMenuIndex/:section', function (req, res) {
         })
 });
 
-router.post('/', function (req, res) {
+router.post('/', checkLogin, function (req, res) {
     let author = req.session.user._id;
     let title = req.body.title;
     let section = req.body.section;
@@ -62,6 +64,7 @@ router.post('/', function (req, res) {
         });
 });
 
+//for ajax use
 router.post('/uploadPost', uploadMemory.single('postFile'), function (req, res) {
     console.log("uploading post in router...");
 

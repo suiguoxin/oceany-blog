@@ -2,8 +2,9 @@ let express = require('express');
 let router = express.Router();
 
 let MenuItemModel = require('../models/menuItems');
+let checkLogin = require('../middlewares/check').checkLogin;
 
-router.get('/:section', function (req, res) {
+router.get('/:section', checkLogin, function (req, res) {
     let section = req.params.section;
 
     MenuItemModel.getMenuItemsBySection(section)
@@ -15,7 +16,7 @@ router.get('/:section', function (req, res) {
         });
 });
 
-router.post('/:section', function (req, res) {
+router.post('/:section', checkLogin, function (req, res) {
     console.log("Creating the new menu item...");
     let section = req.body.section;
     let index = req.body.index;

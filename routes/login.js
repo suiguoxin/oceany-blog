@@ -3,12 +3,13 @@ let router = express.Router();
 let bcrypt = require('bcrypt');
 
 let LocalAuthModel = require('../models/localAuths');
+let checkNotLogin = require('../middlewares/check').checkNotLogin;
 
-router.get('/', function (req, res) {
+router.get('/', checkNotLogin, function (req, res) {
     res.render('login');
 });
 
-router.post('/', function (req, res) {
+router.post('/', checkNotLogin, function (req, res) {
     let username = req.body.username;
     let password = req.body.password;
 
@@ -21,7 +22,7 @@ router.post('/', function (req, res) {
             //bcrypt check hash in mode async
             bcrypt.compare(password, localAuth.password)
                 .then(function (result) {
-                    if (result == false) {
+                    if (result === false) {
                         req.flash('error', 'password is wrong');
                         return res.redirect('back');
                     }

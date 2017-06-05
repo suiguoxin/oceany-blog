@@ -5,6 +5,8 @@ let PostModel = require('../models/posts');
 let CommentModel = require('../models/comments');
 let MenuItemModel = require('../models/menuItems');
 
+let checkLogin = require('../middlewares/check').checkLogin;
+
 router.get('/:section', function (req, res) {
     let section = req.params.section;
 
@@ -62,7 +64,7 @@ router.get('/:section/:postId', function (req, res) {
         });
 });
 
-router.get('/:section/:postId/edit', function (req, res) {
+router.get('/:section/:postId/edit', checkLogin, function (req, res) {
     let postId = req.params.postId;
     let author = req.session.user._id;
 

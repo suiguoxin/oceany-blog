@@ -57,7 +57,10 @@
                     <div class="dropdown-menu">
                         <% if(user) { %>
                         <a class="dropdown-item" href="/profile">Profile</a>
+                        <!--the user admin can publish-->
+                        <% if (user.authority == 'admin') { %>
                         <a class="dropdown-item" href="/publish">Publish</a>
+                        <% } %>
                         <a class="dropdown-item" href="/logout">Logout</a>
                         <% } else { %>
                         <a class="dropdown-item" href="/signup">Sign up</a>
