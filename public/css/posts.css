@@ -43,12 +43,23 @@
 }
 
 /*comments part*/
-.media {
+.comments-title{
+    text-align: left;
+}
+.comment-content {
     border-bottom: .05rem solid #e5e5e5;
     border-top: .05rem solid #e5e5e5;
 }
+.comment-meta-author{
+    font-size: 16px;
+    color: #337ab7;
+}
+.comment-meta-date{
+    font-size: 12px;
+    color: #969696;
+}
 
 .media-img-container {
-    height: 64px;
-    width: 64px;
+    height: 48px;
+    width: 48px;
 }

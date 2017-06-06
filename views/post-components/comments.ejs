@@ -1,22 +1,25 @@
-<div>
-    <h3>评论 </h3>
-    <div>
+<div class="comments">
+    <h4 class="comments-title">评论</h4>
+    <div class="comments-content">
         <% comments.forEach(function (comment) { %>
-        <div class="media my-1">
-            <div class="d-flex align-self-start mr-3 media-img-container">
-                <img class="mx-auto" src="<%= comment.author.avatar %>" alt="avatar"
-                     style="max-height: 64px; max-width:64px">
+        <div class="comment-content">
+            <div class="media my-1">
+                <div class="d-flex align-self-start mr-3 media-img-container">
+                    <img class="mx-auto rounded-circle" src="<%= comment.author.avatar %>" alt="avatar">
+                </div>
+                <div class="media-body comment-meta">
+                    <span class="comment-meta-author"><%- comment.author.name %></span>
+                    <div class="comment-meta-date">
+                        <span> <%- comment.created_at %></span>
+                    </div>
+                    <% if (user && comment.author._id && user._id.toString() === comment.author._id.toString()) { %>
+                    <% } %>
+                </div>
             </div>
-            <div class="media-body">
-                <span class="mt-0">Created at <%- comment.created_at %></span>
-                <span> by: <%- comment.author.name %></span>
-                <p> <%- comment.content %></p>
-            </div>
-            <% if (user && comment.author._id && user._id.toString() === comment.author._id.toString()) { %>
-            <div>
+            <div class="comment-meta-right">
                 <a href="/posts/<%= section %>/<%= post._id %>/comments/<%= comment._id %>/delete">删除</a>
             </div>
-            <% } %>
+            <p> <%- comment.content %></p>
         </div>
         <% }) %>
         <% if (user) { %>
