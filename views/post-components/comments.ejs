@@ -1,9 +1,9 @@
 <div>
-    <h3>Comments: </h3>
-    <div class="content">
+    <h3>评论 </h3>
+    <div>
         <% comments.forEach(function (comment) { %>
-        <div class="media my-1" style="border-bottom: .05rem solid #e5e5e5;border-top: .05rem solid #e5e5e5;">
-            <div class="d-flex align-self-start mr-3" style="height:64px;width:64px;">
+        <div class="media my-1">
+            <div class="d-flex align-self-start mr-3 media-img-container">
                 <img class="mx-auto" src="<%= comment.author.avatar %>" alt="avatar"
                      style="max-height: 64px; max-width:64px">
             </div>

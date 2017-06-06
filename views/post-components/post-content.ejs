@@ -1,24 +1,20 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8 blog-main">
-            <div class="blog-post">
-                <p class="blog-post-meta"><%= post.created_at %> by <a href="#"><%- post.author.name %></a></p>
-                <p><%- post.content %></p>
-                <span>浏览(<%= post.pv %>)</span>
-                <span>评论(<%= post.commentsCount %>)</span>
-                <% if(user && post.author._id && user._id.toString() === post.author._id.toString() ) { %>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown">
-                        Edit
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/posts/<%= section %>/<%= post._id %>/edit">edit</a>
-                        <a class="dropdown-item" href="/posts/<%= section %>/<%= post._id %>/delete">delete</a>
-                    </div>
-                </div>
-                <% } %>
+<div class="post-content">
+    <p><%- post.content %></p>
+</div>
+<div class="post-meta">
+    <p class="post-meta-left"><%= post.created_at %> by <a href="#"><%- post.author.name %></a></p>
+    <div class="post-meta-right">
+        <span class="post-meta-right-child">浏览(<%= post.pv %>)</span>
+        <span class="post-meta-right-child">评论(<%= post.commentsCount %>)</span>
+
+        <% if(user && post.author._id && user._id.toString() === post.author._id.toString() ) { %>
+        <div class="dropdown post-meta-right-child">
+            <a data-toggle="dropdown"> <span class="fa fa-caret-down" aria-hidden="true"></span></a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/posts/<%= section %>/<%= post._id %>/edit">编辑</a>
+                <a class="dropdown-item" href="/posts/<%= section %>/<%= post._id %>/delete">删除</a>
             </div>
         </div>
+        <% } %>
     </div>
 </div>

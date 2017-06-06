@@ -10,9 +10,45 @@
 }
 
 #sidebar {
-    height: auto;
+    position: sticky;
+    top: 56px;
+    height: 30rem;
     -webkit-transition: margin .35s ease;
     -moz-transition: margin .35s ease;
     -o-transition: margin .35s ease;
     transition: margin .35s ease;
+}
+
+/*post meta info*/
+.post-meta {
+    height: 2rem;
+    border-top: dashed 1px lightgray;
+    border-bottom: dashed 1px lightgray;
+}
+
+.post-meta-left {
+    float: left;
+}
+
+.post-meta-right {
+    float: right;
+}
+
+.post-meta-right-child {
+    display: inline-block;
+}
+
+.dropdown-menu {
+    min-width: 1.2rem;
+}
+
+/*comments part*/
+.media {
+    border-bottom: .05rem solid #e5e5e5;
+    border-top: .05rem solid #e5e5e5;
+}
+
+.media-img-container {
+    height: 64px;
+    width: 64px;
 }
