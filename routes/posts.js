@@ -89,7 +89,7 @@ router.post('/:section/:postId/edit', function (req, res) {
 
     PostModel.updatePostById(postId, authorId, {title: title, content: content})
         .then(function () {
-            req.flash('success', 'edit post-components succeed');
+            req.flash('success', 'edit post succeed');
             res.redirect(`/posts/${section}/${postId}`);
         });
 });
@@ -104,7 +104,7 @@ router.get('/:section/:postId/delete', function (req, res) {
     PostModel.deletePostById(postId, authorId)
         .then(function () {
             CommentModel.deleteCommentsByPostId(postId);
-            req.flash('success', 'delete post-components succeed');
+            req.flash('success', 'delete post succeed');
             res.redirect(`/posts/${section}`);
         });
 });
@@ -122,7 +122,7 @@ router.post('/:section/:postId/comment', function (req, res) {
 
     CommentModel.create(comment)
         .then(function () {
-            req.flash('success', 'post-components comment succeed');
+            req.flash('success', 'post comment succeed');
             res.redirect('back');
         });
 });

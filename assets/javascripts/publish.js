@@ -62,7 +62,6 @@
             processData: false,
             contentType: false,
             success: function (res) {
-                alert(res.content);
                 $('#post-poster-src').val(res.content);
             },
             error: function (res) {

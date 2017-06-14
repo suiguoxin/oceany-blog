@@ -11,10 +11,12 @@
                 <div class="media-body">
                     <h5 class="blog-posts-title"><a href="/<%= section %>/<%= post._id %>"> <%- post.title %></a></h5>
                     <div class="posts-meta">
-                        <p><%= post.created_at %> by <a href="#"><%- post.author.name %></a></p>
+                        <p>
+                            <%= post.created_at %> by <a href="#"><%- post.author.name %></a>
+                            <span> 浏览(<%= post.pv %>)</span>
+                            <span> 评论(<%= post.commentsCount %>)</span>
+                        </p>
                     </div>
-                    <span>浏览(<%= post.pv %>)</span>
-                    <span>评论(<%= post.commentsCount %>)</span>
                     <p><%- post.content %></p>
                 </div>
             </li>
