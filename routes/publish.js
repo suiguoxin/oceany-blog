@@ -41,8 +41,8 @@ router.post('/', checkLogin, function (req, res) {
     let author = req.session.user._id;
     let title = req.body.title;
     let section = req.body.section;
-    let menuIndex = req.body.menuIndex;
-    let index = req.body.index;
+    let menuIndex = req.body.menuIndex || '';
+    let index = req.body.index || '';
     let content = req.body.content;
 
     // 待写入数据库的用户信息
@@ -59,7 +59,10 @@ router.post('/', checkLogin, function (req, res) {
     PostModel.create(post)
         .then(function (result) {
             post = result.ops[0];
-            req.flash('success', 'post-components succeed');
+            req.flash('success', 'post succeed');
+            if (section === 'newsletters') {
+                res.redirect('newsletters');
+            }
             res.redirect(`posts/${section}/${post._id}`)
         });
 });

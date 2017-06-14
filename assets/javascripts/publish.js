@@ -73,6 +73,12 @@
     //use ajax to refresh menuIndex
     $("#post-section").change(function () {
         let section = $('#post-section').val();
+
+        if(section === 'newsletters') {
+            $("#menuIndex").empty();
+            return
+        }
+
         let url = `/publish/getMenuIndex/${section}`;
 
         $.ajax({
