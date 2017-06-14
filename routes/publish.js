@@ -44,12 +44,16 @@ router.post('/', checkLogin, function (req, res) {
     let menuIndex = req.body.menuIndex || '';
     let index = req.body.index || '';
     let content = req.body.content;
+    let poster = req.body.poster || '';
+
+    console.log(`poster: ${poster}`);
 
     // 待写入数据库的用户信息
     let post = {
         author: author,
         title: title,
         section: section,
+        poster: poster,
         menuIndex: menuIndex,
         index: index,
         content: content,
@@ -62,6 +66,7 @@ router.post('/', checkLogin, function (req, res) {
             req.flash('success', 'post succeed');
             if (section === 'newsletters') {
                 res.redirect('newsletters');
+                return ;
             }
             res.redirect(`posts/${section}/${post._id}`)
         });
@@ -76,15 +81,21 @@ router.post('/uploadPost', uploadMemory.single('postFile'), function (req, res) 
     res.json({content: content});
 });
 
+//for ajax use
 router.post('/uploadImg', uploadMemory.single('postImg'), function (req, res) {
     console.log(req.file);
 
     let postImg = req.file;
+    let format = req.body.format;
 
     client.upload(postImg.buffer, {key: postImg.fieldname + '-' + Date.now()}, function (err, result) {
         let url = 'http://oq29i4a0h.bkt.clouddn.com/';
         let src = url + result.key;
-        let content = "![" + postImg.originalname + "](" + src + ")";
+        let content;
+        if (format === 'md') {
+            content = "![" + postImg.originalname + "](" + src + ")";
+        } else content = src;
+
         //return img src to ajax
         res.json({content: content});
     });

@@ -1,4 +1,4 @@
-<%- include('../header') %>
+<%- include('../components/header') %>
 
 <link href="/stylesheets/newsletters.css" rel="stylesheet">
 
@@ -6,11 +6,13 @@
     <div>
         <ul class="list-unstyled">
             <% posts.forEach(function (post){ %>
-            <li class="media">
-                <img class="d-flex mr-3" src="..." alt="Generic placeholder image">
+            <li class="media my-5">
+                <img class="d-flex mr-3 poster" src="<%- post.poster %>" alt="Poster image">
                 <div class="media-body">
-                    <h5><%- post.title %></h5>
-                    <p><%= post.created_at %> by <a href="#"><%- post.author.name %></a></p>
+                    <h5 class="blog-posts-title"><a href="/<%= section %>/<%= post._id %>"> <%- post.title %></a></h5>
+                    <div class="posts-meta">
+                        <p><%= post.created_at %> by <a href="#"><%- post.author.name %></a></p>
+                    </div>
                     <span>浏览(<%= post.pv %>)</span>
                     <span>评论(<%= post.commentsCount %>)</span>
                     <p><%- post.content %></p>
@@ -18,8 +20,13 @@
             </li>
             <% }) %>
         </ul>
+
+        <%- include('../posts-components/pagination') %>
     </div>
 </div>
 
-<%- include('../footer') %>
-<%- include('../script') %>
+<%- include('../components/footer') %>
+
+<script src="/javascripts/newsletters.js"></script>
+
+<%- include('../components/script') %>

@@ -1,8 +1,8 @@
 function uploadAvatar() {
-    var formData = new FormData();
+    let formData = new FormData();
     //why this line doesn't work
-    //var avatar = $('#avatar').files[0];
-    var avatar = document.getElementById("avatar").files[0];
+    //let avatar = $('#avatar').files[0];
+    let avatar = document.getElementById("avatar").files[0];
     formData.append("avatar", avatar);
 
     $.ajax({

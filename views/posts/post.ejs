@@ -1,4 +1,4 @@
-<%- include('../header') %>
+<%- include('../components/header') %>
 
 <link href="/stylesheets/posts.css" rel="stylesheet">
 
@@ -17,16 +17,16 @@
             </a>
             <div class="row">
                 <div class="col-10 offset-1" id="content">
-                    <%- include('../post-components/post-content') %>
-                    <%- include('../post-components/comments') %>
+                    <%- include('../post-components/post-content-complete') %>
+                    <%- include('../posts-components/comments') %>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<%- include('../footer') %>
+<%- include('../components/footer') %>
 
 <script src="/javascripts/posts.js"></script>
 
-<%- include('../script') %>
+<%- include('../components/script') %>

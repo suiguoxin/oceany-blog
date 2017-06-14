@@ -1,4 +1,4 @@
-<%- include('../header') %>
+<%- include('../components/header') %>
 
 <div class="container my-3" style="width: 60%">
     <form method="post">
@@ -14,7 +14,6 @@
                 <select class="form-control" name="section" id="post-section" onchange="changeSection()">
                     <option <% if (post && post.section == 'cfd') { %> selected <% } %> value="cfd">CFD</option>
                     <option <% if (post && post.section == 'openfoam') { %> selected <% } %> value="openfoam">OpenFoam</option>
-                    <option <% if (post && post.section == 'softwares') { %> selected <% } %> value="softwares">Softwares</option>
                 </select>
             </div>
         </div>
@@ -46,8 +45,8 @@
     </form>
 </div>
 
-<%- include('../footer') %>
+<%- include('../components/footer') %>
 
 <script src="/javascripts/publish.js"></script>
 
-<%- include('../script') %>
+<%- include('../components/script') %>

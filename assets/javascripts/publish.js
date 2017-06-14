@@ -32,6 +32,8 @@
         let formData = new FormData();
         let postImg = document.getElementById("post-img").files[0];
         formData.append("postImg", postImg);
+        formData.append("format", 'md');
+
         $.ajax({
             url: '/publish/uploadImg',
             type: "POST",
@@ -40,6 +42,28 @@
             contentType: false,
             success: function (res) {
                 $('#post-content').insertAtCaret(res.content);
+            },
+            error: function (res) {
+                alert(res);
+            }
+        });
+    });
+
+    $("#post-poster").change(function () {
+        let formData = new FormData();
+        let postImg = document.getElementById("post-poster").files[0];
+        formData.append("postImg", postImg);
+        formData.append("format", 'src');
+
+        $.ajax({
+            url: '/publish/uploadImg',
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (res) {
+                alert(res.content);
+                $('#post-poster-src').val(res.content);
             },
             error: function (res) {
                 alert(res);
@@ -74,7 +98,7 @@
     $("#post-section").change(function () {
         let section = $('#post-section').val();
 
-        if(section === 'newsletters') {
+        if (section === 'newsletters') {
             $("#menuIndex").empty();
             return
         }

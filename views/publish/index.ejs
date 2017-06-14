@@ -1,9 +1,14 @@
-<%- include('../header') %>
+<%- include('../components/header') %>
 
 <link href="/stylesheets/publish.css" rel="stylesheet">
 
 <div class="container my-3" style="width: 60%">
     <form method="post">
+        <div id="spinner" class="form-group row spinner" style="display:none;">
+            <img src="/images/spinner.gif">
+            Uploading...
+        </div>
+
         <div class="form-group row">
             <label class="col-2 col-form-label" for="post-section">Section：</label>
             <div class="col-10">
@@ -29,6 +34,13 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-2 col-form-label" for="post-poster">Poster</label>
+            <div class="col-3 ">
+                <input type="file" name="post-poster" class="form-control-file" id="post-poster">
+            </div>
+            <input type="text" name="poster" id="post-poster-src" hidden>
+        </div>
+        <div class="form-group row">
             <label class="col-2 col-form-label" for="post-file">正文:</label>
             <div class="col-3">
                 <input type="file" name="postFile" class="form-control-file" id="post-file">
@@ -48,9 +60,10 @@
     </form>
 </div>
 
-<%- include('../footer') %>
+<%- include('../components/footer') %>
 
 <script src="/javascripts/lib/jquery.numberedtextarea.js"></script>
 <script src="/javascripts/publish.js"></script>
+<script src="/javascripts/oceany.js"></script>
 
-<%- include('../script') %>
+<%- include('../components/script') %>

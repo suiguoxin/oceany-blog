@@ -1,22 +1,22 @@
-<%- include('../header') %>
+<%- include('../components/header') %>
 
 <link rel="stylesheet" href="/stylesheets/lib/highlight.default.css">
-<script src="/javascripts/highlight.pack.js"></script>
+<script src="/javascripts/lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <div class="container">
     <div class="blog-header">
-        <p>softwares single post part</p>
+        <p>newsletters single post part</p>
     </div>
     <div class="row">
         <div class="col-3  blog-sidebar" style="background: gainsboro">
             sidebar
         </div>
         <div class="col-9 blog-main">
-            <%- include('../post-components/post-content') %>
-            <%- include('../post-components/comments') %>
+            <%- include('../post-components/post-content-complete') %>
+            <%- include('../posts-components/comments') %>
         </div>
     </div>
 </div>
 
-<%- include('../footer') %>
+<%- include('../components/footer') %>
