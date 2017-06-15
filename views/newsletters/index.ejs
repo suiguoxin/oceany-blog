@@ -10,7 +10,7 @@
                 <img class="d-flex mr-3 poster" src="<%- post.poster %>" alt="Poster image">
                 <div class="media-body">
                     <h5 class="blog-posts-title"><a href="/<%= section %>/<%= post._id %>"> <%- post.title %></a></h5>
-                    <div class="posts-meta">
+                    <div class="posts-meta text-muted">
                         <p>
                             <%= post.created_at %> by <a href="#"><%- post.author.name %></a>
                             <span> 浏览(<%= post.pv %>)</span>
