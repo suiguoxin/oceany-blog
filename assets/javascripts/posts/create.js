@@ -35,7 +35,7 @@
         formData.append("format", 'md');
 
         $.ajax({
-            url: '/publish/uploadImg',
+            url: '/posts/create/uploadImg',
             type: "POST",
             data: formData,
             processData: false,
@@ -56,7 +56,7 @@
         formData.append("format", 'src');
 
         $.ajax({
-            url: '/publish/uploadImg',
+            url: '/posts/create/uploadImg',
             type: "POST",
             data: formData,
             processData: false,
@@ -79,7 +79,7 @@
         formData.append("postFile", postFile);
 
         $.ajax({
-            url: '/publish/uploadPost',
+            url: '/posts/create/uploadPost',
             type: "POST",
             data: formData,
             processData: false,
@@ -102,7 +102,7 @@
             return
         }
 
-        let url = `/publish/getMenuIndex/${section}`;
+        let url = `/posts/create/getMenuIndex/${section}`;
 
         $.ajax({
             method: "get",

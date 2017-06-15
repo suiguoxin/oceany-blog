@@ -1,7 +1,31 @@
 <%- include('../components/header') %>
 
+<link href="/stylesheets/posts/create.css" rel="stylesheet">
+
 <div class="container my-3" style="width: 60%">
     <form method="post">
+        <div id="spinner" class="form-group row spinner" style="display:none;">
+            <img src="/images/spinner.gif">
+            Uploading...
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="post-section">Section：</label>
+            <div class="col-10">
+                <select class="custom-select" name="section" id="post-section">
+                    <option <% if (post && post.section == 'openfoam') { %> selected <% } %> value="openfoam">OpenFoam</option>
+                    <option <% if (post && post.section == 'palabos') { %> selected <% } %> value="palabos">Palabos</option>
+                    <option <% if (post && post.section == 'openlb') { %> selected <% } %> value="openlab">Openlb</option>
+                    <option <% if (post && post.section == 'reef3d') { %> selected <% } %> value="reef3d">REEF-3D</option>
+                    <option <% if (post && post.section == 'fluidty') { %> selected <% } %> value="fluidty">FLUIDTY</option>
+                    <option <% if (post && post.section == 'nemoh') { %> selected <% } %> value="nemoh">NemoH</option>
+                    <option <% if (post && post.section == 'newsletters') { %> selected <% } %> value="newsletters">Newsletters</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="menuIndex"></div>
+
         <div class="form-group row">
             <label class="col-2 col-form-label" for="post-title">标题</label>
             <div class="col-10">
@@ -9,22 +33,12 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-2 col-form-label" for="post-section">Section：</label>
-            <div class="col-10">
-                <select class="form-control" name="section" id="post-section" onchange="changeSection()">
-                    <option <% if (post && post.section == 'cfd') { %> selected <% } %> value="cfd">CFD</option>
-                    <option <% if (post && post.section == 'openfoam') { %> selected <% } %> value="openfoam">OpenFoam</option>
-                </select>
+            <label class="col-2 col-form-label" for="post-poster">Poster</label>
+            <div class="col-3 ">
+                <input type="file" name="post-poster" class="form-control-file" id="post-poster">
             </div>
+            <input type="text" name="poster" id="post-poster-src" hidden>
         </div>
-        <div class="form-group row" id="form-group-index" >
-            <label class="col-2 col-form-label" for="post-index">Index：</label>
-            <div class="col-10">
-                <input type="text" class="form-control" name="index" id="post-index" <% if (post) { %> value="<%= post.index%>" <% } %>
-                       placeholder="examples: 1, 2, 1.1, 2.5...">
-            </div>
-        </div>
-
         <div class="form-group row">
             <label class="col-2 col-form-label" for="post-file">正文:</label>
             <div class="col-3">
@@ -39,7 +53,7 @@
         </div>
 
         <div class="form-group">
-            <textarea class="form-control" name="content" id="post-content" rows="10"><% if (post) { %> <%= post.content%> <% } %></textarea>
+            <textarea class="form-control" name="content" id="post-content" rows="10"><% if (post) { %><%= post.content%> <% } %></textarea>
         </div>
         <button type="submit" class="btn btn-info">发表</button>
     </form>
@@ -47,6 +61,7 @@
 
 <%- include('../components/footer') %>
 
-<script src="/javascripts/publish.js"></script>
+<script src="/javascripts/lib/jquery.numberedtextarea.js"></script>
+<script src="/javascripts/posts/create.js"></script>
 
 <%- include('../components/script') %>
