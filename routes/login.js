@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let bcrypt = require('bcrypt');
+let bcrypt = require('bcryptjs');
 
 let LocalAuthModel = require('../models/localAuths');
 let checkNotLogin = require('../middlewares/check').checkNotLogin;
