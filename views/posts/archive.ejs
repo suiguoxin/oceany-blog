@@ -7,8 +7,11 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
-            <%- include('../posts-components/post-content-complete') %>
-            <%- include('../posts-components/comments') %>
+            <% posts.forEach(function (post){ %>
+            <%- include('../posts-components/post-content-short', {post:post}) %>
+            <% }) %>
+
+            <%- include('../posts-components/pagination') %>
         </div>
     </div>
 </div>

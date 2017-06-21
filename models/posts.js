@@ -1,6 +1,6 @@
-var Post = require('../lib/mongo.js').Post;
-var CommentModel = require('../models/comments');
-var marked = require('marked');
+const Post = require('../lib/mongo.js').Post;
+const CommentModel = require('../models/comments');
+const marked = require('marked');
 
 Post.plugin('addCommentsCount', {
     afterFind: function (posts) {
@@ -71,21 +71,11 @@ module.exports = {
             .addCommentsCount()
             .exec();
     },
-    getPosts: function getPosts() {
+    getPostsByPage: function getFivePosts(page, size) {
         return Post
             .find()
-            .populate({path: 'author', model: 'User'})
-            .sort({_id: -1})
-            .contentToHtml()
-            .addCreatedAt()
-            .addCommentsCount()
-            .exec();
-    },
-    getFivePosts: function getFivePosts(page) {
-        return Post
-            .find()
-            .skip(5 * (page - 1))
-            .limit(5)
+            .skip(size * (page - 1))
+            .limit(size)
             .populate({path: 'author', model: 'User'})
             .sort({_id: -1})
             .contentToHtml()
@@ -104,17 +94,17 @@ module.exports = {
             .find({section: section})
             .populate({path: 'author', model: 'User'})
             .sort({_id: -1})
-            .sort({index:1})
+            .sort({index: 1})
             .contentToHtml()
             .addCreatedAt()
             .addCommentsCount()
             .exec();
     },
-    getFivePostsBySection: function getFivePostsBySection(page,section) {
+    getPostsBySectionAndPage: function (page, size, section) {
         return Post
             .find({section: section})
-            .skip(5 * (page - 1))
-            .limit(5)
+            .skip(size * (page - 1))
+            .limit(size)
             .populate({path: 'author', model: 'User'})
             .sort({_id: -1})
             .contentToHtml()

@@ -9,15 +9,16 @@ router.get('/', function (req, res) {
     console.log("getting page " + page + "...");
 
     let section = 'newsletters';
+    const size = 4;
 
     PostModel.getPostsCountBySection(section)
         .then(function (postsCount) {
             //pagesCount is of type float
-            let pagesCount = postsCount / 5;
+            let pagesCount = postsCount / size;
             let isFirstPage = (page - 1) === 0;
-            let isLastPage = (page * 5) > postsCount;
+            let isLastPage = (page * size) > postsCount;
 
-            PostModel.getFivePostsBySection(page, section)
+            PostModel.getPostsBySectionAndPage(page, size, section)
                 .then(function (result) {
                     res.render('newsletters', {
                         section: section,

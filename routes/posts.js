@@ -108,6 +108,32 @@ router.post('/create', checkLogin, function (req, res) {
         });
 });
 
+router.get('/archive', function (req, res) {
+    let page = req.query.page ? req.query.page : 1;
+    console.log("getting page " + page + "...");
+
+    const size = 8;
+
+    PostModel.getPostsCount()
+        .then(function (postsCount) {
+            //pagesCount is of type float
+            let pagesCount = postsCount / size;
+            let isFirstPage = (page - 1) === 0;
+            let isLastPage = (page * size) > postsCount;
+
+            PostModel.getPostsByPage(page, size)
+                .then(function (result) {
+                    res.render('posts/archive', {
+                        posts: result,
+                        page: page,
+                        isFirstPage: isFirstPage,
+                        isLastPage: isLastPage,
+                        pagesCount: pagesCount
+                    });
+                });
+        });
+});
+
 router.get('/:section', function (req, res) {
     let section = req.params.section;
 
