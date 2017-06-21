@@ -19,44 +19,14 @@
     transition: margin .35s ease;
 }
 
-/*post meta info*/
-.post-meta {
-    height: 2rem;
-    border-top: dashed 1px lightgray;
-    border-bottom: dashed 1px lightgray;
-}
-
-.post-meta-left {
-    float: left;
-}
-
-.post-meta-right {
-    float: right;
-}
-
-.post-meta-right-child {
-    display: inline-block;
-}
-
 .dropdown-menu {
     min-width: 1.2rem;
 }
 
 /*comments part*/
-.comments-title{
-    text-align: left;
-}
-.comment-content {
-    border-bottom: .05rem solid #e5e5e5;
-    border-top: .05rem solid #e5e5e5;
-}
 .comment-meta-author{
     font-size: 16px;
     color: #337ab7;
-}
-.comment-meta-date{
-    font-size: 12px;
-    color: #969696;
 }
 
 .media-img-container {

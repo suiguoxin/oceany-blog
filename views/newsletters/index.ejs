@@ -9,12 +9,14 @@
             <li class="media my-5">
                 <img class="d-flex mr-3 poster" src="<%- post.poster %>" alt="Poster image">
                 <div class="media-body">
-                    <h5 class="blog-posts-title"><a href="/<%= section %>/<%= post._id %>"> <%- post.title %></a></h5>
-                    <div class="posts-meta text-muted">
+                    <h5><a href="/<%= section %>/<%= post._id %>"> <%- post.title %></a></h5>
+                    <div class="text-muted">
                         <p>
-                            <%= post.created_at %> by <a href="#"><%- post.author.name %></a>
-                            <span> 浏览(<%= post.pv %>)</span>
-                            <span> 评论(<%= post.commentsCount %>)</span>
+                            <small>
+                                <%= post.created_at %> by <a href="#"><%- post.author.name %></a>
+                                <span> 浏览(<%= post.pv %>)</span>
+                                <span> 评论(<%= post.commentsCount %>)</span>
+                            </small>
                         </p>
                     </div>
                     <p><%- post.content %></p>

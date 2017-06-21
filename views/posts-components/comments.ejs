@@ -1,5 +1,4 @@
 <div class="comments">
-    <h4 class="comments-title">评论</h4>
     <div class="comments-content">
         <% comments.forEach(function (comment) { %>
         <div class="comment-content">
@@ -7,10 +6,12 @@
                 <div class="d-flex align-self-start mr-3 media-img-container">
                     <img class="mx-auto rounded-circle" src="<%= comment.author.avatar %>" alt="avatar">
                 </div>
-                <div class="media-body comment-meta">
+                <div class="media-body">
                     <span class="comment-meta-author"><%- comment.author.name %></span>
-                    <div class="comment-meta-date">
-                        <span> <%- comment.created_at %></span>
+                    <div class="text-muted">
+                        <small>
+                            <span> <%- comment.created_at %></span>
+                        </small>
                     </div>
                     <% if (user && comment.author._id && user._id.toString() === comment.author._id.toString()) { %>
                     <% } %>

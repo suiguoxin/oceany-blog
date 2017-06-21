@@ -1,9 +1,10 @@
 <div class="post-content">
     <p><%- post.content %></p>
 </div>
-<div class="post-meta text-muted">
-    <p class="post-meta-left"><%= post.created_at %> by <a href="#"><%- post.author.name %></a></p>
-    <div class="post-meta-right">
+<hr class="my-3">
+<div class="text-muted">
+    <p><%= post.created_at %> by <a href="#"><%- post.author.name %></a></p>
+    <div>
         <span class="post-meta-right-child">浏览(<%= post.pv %>)</span>
         <span class="post-meta-right-child">评论(<%= post.commentsCount %>)</span>
 
@@ -18,3 +19,4 @@
         <% } %>
     </div>
 </div>
+<hr class="my-3">
