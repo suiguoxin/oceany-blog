@@ -1,18 +1,23 @@
 let express = require('express');
 let router = express.Router();
+
+//config
+let config = require("config-lite")(__dirname);
+
 //multer
 let multer = require('multer');
 let memoryStorage = multer.memoryStorage();
 let uploadMemory = multer({storage: memoryStorage});
+
 //qiniu
 let qn = require('qn');
 let client = qn.create({
-    accessKey: 'IThkAny7wzlPGCR2pcJT8IrWkdes0Ic7PR38OwoQ',
-    secretKey: '4lUiAwT3jymK85eFu85PboWTjuv6wLM8wMO8oCEs',
-    bucket: 'oceany',
-    origin: 'http://oceany.u.qiniudn.com',
-    timeout: 3600000, // default rpc timeout: one hour
-    uploadURL: 'http://up-z2.qiniu.com/' // the app outside of China
+    accessKey: config.qn.accessKey,
+    secretKey: config.qn.secretKey,
+    bucket: config.qn.bucket,
+    origin: config.qn.origin,
+    timeout: config.qn.timeout,
+    uploadURL: config.qn.uploadURL
 });
 
 let UserModel = require('../models/users');
@@ -46,10 +51,10 @@ router.post('/uploadAvatar', uploadMemory.single('avatar'), function (req, res) 
     let avatar = req.file;
 
     //upload to qiniu
-    client.upload(avatar.buffer, {key: req.file.fieldname+ '-' + Date.now()}, function (err, result) {
+    client.upload(avatar.buffer, {key: req.file.fieldname + '-' + Date.now()}, function (err, result) {
         console.log(result);
-        let url = 'http://oq29i4a0h.bkt.clouddn.com/';
-        let src = url+result.key;
+        let cdn = config.qn.cdn;
+        let src = cdn + result.key;
         //upload the user in db
         UserModel.updateUserById(userId, {avatar: src})
             .then(function () {
