@@ -1,0 +1,20 @@
+<%- include('../components/header') %>
+
+<link rel="stylesheet" href="/stylesheets/lib/highlight.default.css">
+<script src="/javascripts/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <% posts.forEach(function (post){ %>
+            <%- include('../posts-components/post-content-short', {post:post}) %>
+            <% }) %>
+
+            <%- include('../posts-components/pagination', {pageLinkHref: pageLinkHref) %>
+        </div>
+    </div>
+</div>
+
+<%- include('../components/footer') %>
+<%- include('../components/script') %>

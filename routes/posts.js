@@ -128,7 +128,37 @@ router.get('/archive', function (req, res) {
                         page: page,
                         isFirstPage: isFirstPage,
                         isLastPage: isLastPage,
-                        pagesCount: pagesCount
+                        pagesCount: pagesCount,
+                        pageLink: '/posts/archive?page='
+                    });
+                });
+        });
+});
+
+router.get('/search', function (req, res) {
+    let keyword = req.query.keyword;
+    let page = req.query.page ? req.query.page : 1;
+    console.log("getting page " + page + "...");
+
+    const size = 8;
+
+    PostModel.getPostsCountByKeyword(keyword)
+        .then(function (postsCount) {
+            //pagesCount is of type float
+            let pagesCount = postsCount / size;
+            let isFirstPage = (page - 1) === 0;
+            let isLastPage = (page * size) > postsCount;
+
+            PostModel.getPostsByKeyword(page, size, keyword)
+                .then(function (result) {
+                    res.render('posts/archive', {
+                        keyword: keyword,
+                        posts: result,
+                        page: page,
+                        isFirstPage: isFirstPage,
+                        isLastPage: isLastPage,
+                        pagesCount: pagesCount,
+                        pageLink: `/posts/search?keyword=${keyword}&page=`
                     });
                 });
         });

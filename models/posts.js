@@ -62,7 +62,7 @@ module.exports = {
             .addCommentsCount()
             .exec();
     },
-    getPostBySectionAndIndex: function getPostBySectionAndIndex(section, index) {
+    getPostBySectionAndIndex: function (section, index) {
         return Post
             .findOne({section: section, index: index})
             .populate({path: 'author', model: 'User'})
@@ -71,7 +71,7 @@ module.exports = {
             .addCommentsCount()
             .exec();
     },
-    getPostsByPage: function getFivePosts(page, size) {
+    getPostsByPage: function (page, size) {
         return Post
             .find()
             .skip(size * (page - 1))
@@ -83,13 +83,32 @@ module.exports = {
             .addCommentsCount()
             .exec();
     },
-    getPostsCount: function getPostsCount() {
+    getPostsByKeyword: function (page, size, keyword) {
+        let pattern = new RegExp(keyword, "i");
+        return Post
+            .find({"title": pattern})
+            .skip(size * (page - 1))
+            .limit(size)
+            .populate({path: 'author', model: 'User'})
+            .sort({_id: -1})
+            .contentToHtml()
+            .addCreatedAt()
+            .addCommentsCount()
+            .exec();
+    },
+    getPostsCountByKeyword: function (keyword) {
+        let pattern = new RegExp(keyword, "i");
+        return Post
+            .count({"title": pattern})
+            .exec();
+    },
+    getPostsCount: function () {
         return Post
             .count({})
             .exec();
     },
     //firstly sort by id, then by index(if exist)
-    getPostsBySection: function getPostsBySection(section) {
+    getPostsBySection: function (section) {
         return Post
             .find({section: section})
             .populate({path: 'author', model: 'User'})

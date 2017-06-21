@@ -26,7 +26,8 @@ router.get('/', function (req, res) {
                         page: page,
                         isFirstPage: isFirstPage,
                         isLastPage: isLastPage,
-                        pagesCount: pagesCount
+                        pagesCount: pagesCount,
+                        pageLink: '/newsletters?page='
                     });
                 });
         });
