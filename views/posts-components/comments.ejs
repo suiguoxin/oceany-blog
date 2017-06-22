@@ -3,33 +3,44 @@
         <% comments.forEach(function (comment) { %>
         <div class="comment-content">
             <div class="media my-1">
+                <!--<div class="d-flex align-self-start mr-3 media-img-container">-->
                 <div class="d-flex align-self-start mr-3 media-img-container">
                     <img class="mx-auto rounded-circle" src="<%= comment.author.avatar %>" alt="avatar">
                 </div>
                 <div class="media-body">
-                    <span class="comment-meta-author"><%- comment.author.name %></span>
-                    <div class="text-muted">
-                        <small>
-                            <span> <%- comment.created_at %></span>
-                        </small>
+                    <h5>
+                        <a href="#"><%- comment.author.name %></a>
+                        <small class="text-muted"> <%- comment.created_at %></small>
+                    </h5>
+                    <div>
+                        <%- comment.content %>
                     </div>
-                    <% if (user && comment.author._id && user._id.toString() === comment.author._id.toString()) { %>
-                    <% } %>
+                    <div>
+                        <% if (user && comment.author._id && user._id.toString() === comment.author._id.toString()) { %>
+                        <a href="/posts/<%= section %>/<%= post._id %>/comments/<%= comment._id %>/delete">
+                            <span class="fa fa-remove"> 删除</span>
+                        </a>
+                        <% } %>
+                    </div>
                 </div>
             </div>
-            <div class="comment-meta-right">
-                <a href="/posts/<%= section %>/<%= post._id %>/comments/<%= comment._id %>/delete">删除</a>
-            </div>
-            <p> <%- comment.content %></p>
         </div>
+
+        <hr class="my-3">
         <% }) %>
+
         <% if (user) { %>
-        <form method="post" action="/posts/<%= section %>/<%= post._id %>/comment">
-            <div class="form-group">
-                <textarea class="form-control" name="content"></textarea>
-            </div>
-            <button type="submit" class="btn btn-secondary">留言</button>
-        </form>
+        <div class="card card-block bg-faded my-3">
+            <h5 class="card-title">
+                <i class="fa fa-pencil" aria-hidden="true"></i> Leave a comment
+            </h5>
+            <form method="post" action="/posts/<%= section %>/<%= post._id %>/comment">
+                <div class="form-group">
+                    <textarea class="form-control" name="content"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">留言</button>
+            </form>
+        </div>
         <% } %>
     </div>
 </div>

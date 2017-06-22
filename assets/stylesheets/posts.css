@@ -24,12 +24,7 @@
 }
 
 /*comments part*/
-.comment-meta-author{
-    font-size: 16px;
-    color: #337ab7;
-}
-
 .media-img-container {
-    height: 48px;
-    width: 48px;
+    height: 64px;
+    width: 64px;
 }
