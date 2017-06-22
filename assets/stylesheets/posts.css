@@ -28,3 +28,7 @@
     height: 64px;
     width: 64px;
 }
+
+body{
+    padding-bottom: 0;
+}

@@ -18,6 +18,14 @@
     //     });
     // });
 
+    $(document).ready(function () {
+        $('#sidebar').outerHeight($(window).height() - 56);
+    });
+
+    $(window).resize(function () {
+        $('#sidebar').outerHeight($(window).height() - 56);
+    });
+
     $('#sidebar')
         .on('show.bs.collapse', function () {
             $("#main").toggleClass("col-9 col-12");
@@ -28,5 +36,6 @@
                     $("#main").toggleClass("col-9 col-12");
                 }, 350);
         });
+
 
 })(jQuery);
