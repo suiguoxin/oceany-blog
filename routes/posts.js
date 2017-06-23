@@ -167,17 +167,46 @@ router.get('/search', function (req, res) {
 router.get('/:section', function (req, res) {
     let section = req.params.section;
 
-    Promise.all([
-        MenuItemModel.getMenuItemsBySection(section),
-        PostModel.getPostsBySection(section)
-    ])
-        .then(function (result) {
-            res.render(`posts/index`, {
-                section: section,
-                menuItems: result[0],
-                posts: result[1]
+    if (section === 'newsletters') {
+        let page = req.query.page ? parseInt(req.query.page) : 1;
+        console.log("getting page " + page + "...");
+
+        let section = 'newsletters';
+        const size = 3;
+
+        PostModel.getPostsCountBySection(section)
+            .then(function (postsCount) {
+                //pagesCount is of type float
+                let pagesCount = postsCount / size;
+                let isFirstPage = (page === 1);
+                let isLastPage = (page * size) >= postsCount;
+
+                PostModel.getPostsBySectionAndPage(page, size, section)
+                    .then(function (result) {
+                        res.render('posts/newsletters/index', {
+                            section: section,
+                            posts: result,
+                            page: page,
+                            isFirstPage: isFirstPage,
+                            isLastPage: isLastPage,
+                            pagesCount: pagesCount,
+                            pageLink: '/posts/newsletters?page='
+                        });
+                    });
             });
-        });
+    } else {
+        Promise.all([
+            MenuItemModel.getMenuItemsBySection(section),
+            PostModel.getPostsBySection(section)
+        ])
+            .then(function (result) {
+                res.render(`posts/index`, {
+                    section: section,
+                    menuItems: result[0],
+                    posts: result[1]
+                });
+            });
+    }
 });
 
 //for ajax usage
@@ -203,22 +232,39 @@ router.get('/:section/:postId', function (req, res) {
     let section = req.params.section;
     let postId = req.params.postId;
 
-    Promise.all([
-        MenuItemModel.getMenuItemsBySection(section),
-        PostModel.getPostsBySection(section),
-        PostModel.getPostById(postId),
-        CommentModel.getComments(postId),
-        PostModel.incPv(postId)
-    ])
-        .then(function (result) {
-            res.render('posts/post', {
-                section: section,
-                menuItems: result[0],
-                posts: result[1],
-                post: result[2],
-                comments: result[3]
+    if (section === 'newsletters') {
+        Promise.all([
+            PostModel.getPostById(postId),
+            CommentModel.getComments(postId),
+            PostModel.incPv(postId)
+        ])
+            .then(function (result) {
+                let post = result[0];
+                let comments = result[1];
+                res.render(`posts/${section}/post`, {
+                    section: section,
+                    post: post,
+                    comments: comments
+                });
             });
-        });
+    } else {
+        Promise.all([
+            MenuItemModel.getMenuItemsBySection(section),
+            PostModel.getPostsBySection(section),
+            PostModel.getPostById(postId),
+            CommentModel.getComments(postId),
+            PostModel.incPv(postId)
+        ])
+            .then(function (result) {
+                res.render('posts/post', {
+                    section: section,
+                    menuItems: result[0],
+                    posts: result[1],
+                    post: result[2],
+                    comments: result[3]
+                });
+            });
+    }
 });
 
 router.get('/:section/:postId/edit', checkLogin, function (req, res) {

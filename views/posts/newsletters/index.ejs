@@ -1,4 +1,4 @@
-<%- include('../components/header') %>
+<%- include('../../components/header') %>
 
 <link href="/stylesheets/newsletters.css" rel="stylesheet">
 
@@ -9,7 +9,7 @@
             <li class="media my-5">
                 <img class="d-flex mr-3 poster" src="<%- post.poster %>" alt="Poster image">
                 <div class="media-body">
-                    <h5><a href="/<%= section %>/<%= post._id %>"> <%- post.title %></a></h5>
+                    <h5><a href="/posts/<%= section %>/<%= post._id %>"> <%- post.title %></a></h5>
                     <div class="text-muted">
                         <p>
                             <small>
@@ -25,12 +25,12 @@
             <% }) %>
         </ul>
 
-        <%- include('../posts-components/pagination') %>
+        <%- include('../../posts-components/pagination') %>
     </div>
 </div>
 
-<%- include('../components/footer') %>
+<%- include('../../components/footer') %>
 
 <script src="/javascripts/newsletters.js"></script>
 
-<%- include('../components/script') %>
+<%- include('../../components/script') %>

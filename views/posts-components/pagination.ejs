@@ -2,15 +2,15 @@
     <ul class="pagination justify-content-center">
         <% if (!isFirstPage) { %>
         <li class="page-item">
-            <a class="page-link" href="<%= pageLink %> <%= page - 1 %>" tabindex="-1">&laquo;</a>
+            <a class="page-link" href="<%= pageLink %><%= page - 1 %>" tabindex="-1">&laquo;</a>
         </li>
         <% } %>
         <% for(var i = 1; i < pagesCount + 1; i++) { %>
-        <li class="page-item"><a class="page-link" href="<%= pageLink %> <%= i %>"><%= i %></a></li>
+        <li class="page-item"><a class="page-link" href="<%= pageLink %><%= i %>"><%= i %></a></li>
         <% } %>
         <% if (!isLastPage) { %>
         <li class="page-item">
-            <a class="page-link" href="<%= pageLink %> <%= page + 1 %>">&raquo;</a>
+            <a class="page-link" href="<%= pageLink %><%= page + 1 %>">&raquo;</a>
         </li>
         <% } %>
     </ul>

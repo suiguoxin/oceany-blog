@@ -1,0 +1,9 @@
+.dropdown-menu {
+    min-width: 1.2rem;
+}
+
+/*comments part*/
+.media-img-container {
+    height: 64px;
+    width: 64px;
+}
