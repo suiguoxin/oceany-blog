@@ -19,11 +19,7 @@
     // });
 
     $(document).ready(function () {
-        $('#sidebar').outerHeight($(window).height() - 56);
-    });
-
-    $(window).resize(function () {
-        $('#sidebar').outerHeight($(window).height() - 56);
+        $('#back-to-top').backToTop($('#main'));
     });
 
     $('#sidebar')
@@ -31,11 +27,7 @@
             $("#main").toggleClass("col-9 col-12");
         })
         .on('hidden.bs.collapse', function () {
-            setTimeout(
-                function () {
-                    $("#main").toggleClass("col-9 col-12");
-                }, 350);
+            $("#main").toggleClass("col-9 col-12");
         });
-
 
 })(jQuery);

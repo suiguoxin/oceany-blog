@@ -1,5 +1,21 @@
-var Comment = require('../lib/mongo.js').Comment;
-var marked = require('marked');
+const Comment = require('../lib/mongo.js').Comment;
+const marked = require('marked');
+
+//plugin 关键词是什么意思
+Comment.plugin('commentToHtml', {
+    afterFind: function (comments) {
+        return comments.map(function (comment) {
+            comment.content = marked(comment.content);
+            return comment;
+        });
+    },
+    afterFindOne: function (comment) {
+        if (comment) {
+            comment.content = marked(comment.content);
+        }
+        return comment;
+    }
+});
 
 module.exports = {
     create: function create(comment) {
@@ -12,6 +28,7 @@ module.exports = {
             .find({postId: postId})
             .populate({path: 'author', model: 'User'})
             .sort({_id: 1})
+            .commentToHtml()
             .addCreatedAt()
             .exec();
     },

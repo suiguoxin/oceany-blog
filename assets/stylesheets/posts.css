@@ -1,3 +1,7 @@
+body{
+    padding-bottom: 0;
+}
+
 .sidebar.collapse.show {
     visibility: visible;
     display: block;
@@ -10,13 +14,26 @@
 }
 
 #sidebar {
-    position: sticky;
+    position: fixed;
     top: 56px;
-    height: 30rem;
+    bottom: 0;
+    height: auto;
     -webkit-transition: margin .35s ease;
     -moz-transition: margin .35s ease;
     -o-transition: margin .35s ease;
     transition: margin .35s ease;
+}
+
+#main {
+    position: fixed;
+    top: 56px;
+    bottom: 0;
+    right: 0;
+    overflow-y: scroll;
+    -webkit-transition:max-width .35s ease;
+    -moz-transition: max-width .35s ease;
+    -o-transition: max-width .35s ease;
+    transition: max-width .35s ease;
 }
 
 .dropdown-menu {
@@ -29,6 +46,10 @@
     width: 64px;
 }
 
-body{
-    padding-bottom: 0;
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 120px;
+    right: 20px;
+    display: none;
 }

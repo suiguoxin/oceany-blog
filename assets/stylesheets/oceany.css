@@ -16,6 +16,10 @@ body {
 /*
  * Navbar
  */
+.navbar {
+    background: #4682B4;
+}
+
 .navbar .dropdown-menu {
     min-width: 2rem;
     background: #4682B4;
