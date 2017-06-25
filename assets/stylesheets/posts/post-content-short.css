@@ -1,0 +1,4 @@
+.post-text-short {
+    max-height: 120px;
+    overflow-y: hidden;
+}

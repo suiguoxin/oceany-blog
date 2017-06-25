@@ -1,3 +1,19 @@
+.poster {
+    height: 227px;
+    width: 330px;
+}
+
+.media-body {
+    height: 227px;
+    overflow-y: hidden;
+    position: relative;
+}
+
+.post-text-short {
+    max-height: 120px;
+    overflow-y: hidden;
+}
+
 .dropdown-menu {
     min-width: 1.2rem;
 }

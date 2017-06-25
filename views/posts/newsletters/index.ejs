@@ -1,6 +1,6 @@
 <%- include('../../components/header') %>
 
-<link href="/stylesheets/newsletters.css" rel="stylesheet">
+<link href="/stylesheets/posts/newsletters.css" rel="stylesheet">
 
 <div class="container">
     <div>
@@ -19,7 +19,9 @@
                             </small>
                         </p>
                     </div>
-                    <p><%- post.content %></p>
+                    <div class="post-text-short"><%- post.content %></div>
+                    <a href="/posts/<%= section %>/<%= post._id %>" style="position: absolute; left: 0;bottom: 0;"> Read
+                        More ...</a>
                 </div>
             </li>
             <% }) %>

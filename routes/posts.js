@@ -109,7 +109,7 @@ router.post('/create', checkLogin, function (req, res) {
 });
 
 router.get('/archive', function (req, res) {
-    let page = req.query.page ? req.query.page : 1;
+    let page = req.query.page ? parseInt(req.query.page) : 1;
     console.log("getting page " + page + "...");
 
     const size = 8;
@@ -293,11 +293,6 @@ router.post('/:section/:postId/edit', function (req, res) {
     PostModel.updatePostById(postId, authorId, {title: title, content: content})
         .then(function () {
             req.flash('success', 'edit post succeed');
-
-            if (section === 'newsletters') {
-                res.redirect('/newsletters');
-                return;
-            }
             res.redirect(`/posts/${section}/${postId}`);
         });
 });

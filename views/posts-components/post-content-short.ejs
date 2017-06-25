@@ -1,4 +1,17 @@
-<h5>
-    <a href="/posts/<%= post.section %>/<%= post._id %>"> <%- post.title %></a>
-</h5>
-<%= post.created_at %> by <a href="#"><%- post.author.name %></a>
+<link href="/stylesheets/posts/post-content-short.css" rel="stylesheet">
+
+<div class="content-body">
+    <h5><a href="/posts/<%= post.section %>/<%= post._id %>"> <%- post.title %></a></h5>
+    <div class="text-muted">
+        <p>
+            <small>
+                <%= post.created_at %> by <a href="#"><%- post.author.name %></a>
+                <span> 浏览(<%= post.pv %>)</span>
+                <span> 评论(<%= post.commentsCount %>)</span>
+            </small>
+        </p>
+    </div>
+    <div class="post-text-short"><%- post.content %></div>
+</div>
+
+<hr class="my-3">
