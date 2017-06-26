@@ -5,7 +5,8 @@ module.exports = {
         key: 'oceany',
         maxAge: 2592000000
     },
-    mongodb: 'mongodb://localhost:27017/oceany-blog',
+    //ali private ip
+    mongodb: 'mongodb://172.19.139.27:27017/oceany-blog',
     // qn
     qn: {
         accessKey: 'IThkAny7wzlPGCR2pcJT8IrWkdes0Ic7PR38OwoQ',
