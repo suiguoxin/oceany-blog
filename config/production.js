@@ -5,8 +5,7 @@ module.exports = {
         key: 'oceany',
         maxAge: 2592000000
     },
-    mongodb: 'mongodb://admin:admin@ds145009.mlab.com:45009/oceany',
-
+    mongodb: 'mongodb://localhost:27017/oceany-blog',
     // qn
     qn: {
         accessKey: 'IThkAny7wzlPGCR2pcJT8IrWkdes0Ic7PR38OwoQ',
