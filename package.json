@@ -4,11 +4,9 @@
   "description": "blog system for oceany",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=production pm2 start app.js --node-args='--harmony' --name 'oceany'",
-    "stop": "pm2 stop 'oceany'",
-    "heroku": "NODE_ENV=default node --harmony app",
-    "ali": "NODE_ENV=ali pm2 start app.js --node-args='--harmony' --name 'oceany-blog'",
-    "stop-ali": "pm2 stop 'oceany-blog'"
+    "start": "NODE_ENV=ali pm2 start app.js --node-args='--harmony' --name 'oceany-blog'",
+    "stop": "pm2 stop 'oceany-blog'",
+    "heroku": "NODE_ENV=default node --harmony app"
   },
   "author": "Guoxin",
   "license": "ISC",
