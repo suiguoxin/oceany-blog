@@ -5,6 +5,7 @@ module.exports = {
         key: 'oceany',
         maxAge: 2592000000
     },
+    //mlab
     mongodb: 'mongodb://admin:admin@ds145009.mlab.com:45009/oceany',
     // qn
     qn: {
