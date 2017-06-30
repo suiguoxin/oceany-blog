@@ -23,11 +23,16 @@
     });
 
     $('#sidebar')
-        .on('show.bs.collapse', function () {
-            $("#main").toggleClass("col-9 col-12");
+        .on('show.bs.collapse', function (e) {
+            //exclude children
+            if (e.target === this) {
+                $("#main").toggleClass("col-9 col-12");
+            }
         })
-        .on('hidden.bs.collapse', function () {
-            $("#main").toggleClass("col-9 col-12");
+        .on('hidden.bs.collapse', function (e) {
+            if (e.target === this) {
+                $("#main").toggleClass("col-9 col-12");
+            }
         });
 
 })(jQuery);
