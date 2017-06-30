@@ -6,7 +6,7 @@ let config = require("config-lite")(__dirname);
 
 let PostModel = require('../models/posts');
 let CommentModel = require('../models/comments');
-let MenuItemModel = require('../models/menuItems');
+let MenuModel = require('../models/menu');
 
 //multer
 let multer = require('multer');
@@ -34,10 +34,10 @@ router.get('/create', checkLogin, function (req, res) {
 router.get('/create/getMenuIndex/:section', function (req, res) {
     let section = req.params.section;
 
-    MenuItemModel.getMenuItemsBySection(section)
-        .then(function (result) {
+    MenuModel.getMenuBySection(section)
+        .then(function (menu) {
             res.render('posts-components/menuIndex', {
-                menuItems: result
+                menuItems: menu.items
             }, function (err, html) {
                 res.send(html);
             })
@@ -196,37 +196,18 @@ router.get('/:section', function (req, res) {
             });
     } else {
         Promise.all([
-            MenuItemModel.getMenuItemsBySection(section),
+            MenuModel.getMenuBySection(section),
             PostModel.getPostsBySection(section)
         ])
             .then(function (result) {
                 res.render(`posts/index`, {
                     section: section,
-                    menuItems: result[0],
+                    menuItems: result[0].items,
                     posts: result[1]
                 });
             });
     }
 });
-
-//for ajax usage
-// router.get('/:section/:postId', function (req, res) {
-//     let postId = req.params.postId;
-//
-//     Promise.all([
-//         PostModel.getPostById(postId),
-//         CommentModel.getComments(postId),
-//         PostModel.incPv(postId)
-//     ])
-//         .then(function (result) {
-//             res.render('posts/content', {
-//                 post: result[0],
-//                 comments: result[1]
-//             }, function (err, html) {
-//                 res.send(html);
-//             });
-//         });
-// });
 
 router.get('/:section/:postId', function (req, res) {
     let section = req.params.section;
@@ -249,7 +230,7 @@ router.get('/:section/:postId', function (req, res) {
             });
     } else {
         Promise.all([
-            MenuItemModel.getMenuItemsBySection(section),
+            MenuModel.getMenuBySection(section),
             PostModel.getPostsBySection(section),
             PostModel.getPostById(postId),
             CommentModel.getComments(postId),
@@ -258,7 +239,7 @@ router.get('/:section/:postId', function (req, res) {
             .then(function (result) {
                 res.render('posts/post', {
                     section: section,
-                    menuItems: result[0],
+                    menuItems: result[0].items,
                     posts: result[1],
                     post: result[2],
                     comments: result[3]
