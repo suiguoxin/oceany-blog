@@ -1,4 +1,4 @@
-var LocalAuth = require('../lib/mongo.js').LocalAuth;
+let LocalAuth = require('../lib/mongo.js').LocalAuth;
 
 module.exports = {
     create: function create(localAuth) {

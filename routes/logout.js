@@ -8,7 +8,7 @@ router.get('/', checkLogin, function (req, res) {
     req.session.user = null;
     req.flash('success', 'log out succeed');
 
-    res.redirect('back');
+    res.redirect('index');
 });
 
 module.exports = router;

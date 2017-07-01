@@ -61,7 +61,7 @@
                         <% if(user) { %>
                         <a class="dropdown-item" href="/profile">Profile</a>
                         <!--the user admin can publish-->
-                        <% if (user.authority == 'admin') { %>
+                        <% if (user.role == 'admin') { %>
                         <a class="dropdown-item" href="/posts/create">Publish</a>
                         <% } %>
                         <a class="dropdown-item" href="/logout">Logout</a>

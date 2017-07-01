@@ -40,7 +40,7 @@ router.post('/', function (req, res) {
     let user = {
         email: email,
         name: username,
-        authority: 'normal'
+        role: 'normal'
     };
 
     UserModel.create(user)
