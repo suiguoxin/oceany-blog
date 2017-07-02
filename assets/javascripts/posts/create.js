@@ -99,9 +99,11 @@
 
         if (section === 'newsletters') {
             $("#menuIndex").empty();
+            $('#form-group-poster').show();
             return
         }
 
+        $('#form-group-poster').hide();
         let url = `/posts/create/getMenuIndex/${section}`;
 
         $.ajax({

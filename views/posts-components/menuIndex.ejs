@@ -15,7 +15,7 @@
 <div class="form-group row" id="form-group-index">
     <label class="col-2 col-form-label" for="post-index">Index：</label>
     <div class="col-10">
-        <input type="text" class="form-control" name="index" id="post-index" <% if (locals.post) { %> value="<%= post.index%>" <% } %>
-               placeholder="examples: 1, 2, ...">
+        <input type="text" class="form-control" name="index" id="post-index" <% if (!(typeof post == 'undefined')) { %> value="<%= post.index%>" <% } %>
+               placeholder="examples: 1, 2, ..." required>
     </div>
 </div>

@@ -266,12 +266,24 @@ router.get('/:section/:postId/edit', checkLogin, function (req, res) {
 
 router.post('/:section/:postId/edit', function (req, res) {
     let section = req.params.section;
+    let menuIndex = req.body.menuIndex || '';
+    let index = req.body.index || '';
     let postId = req.params.postId;
     let authorId = req.session.user._id;
     let title = req.body.title;
     let content = req.body.content;
+    let poster = req.body.poster || '';
 
-    PostModel.updatePostById(postId, authorId, {title: title, content: content})
+    // 待写入数据库的用户信息
+    let post = {
+        menuIndex: menuIndex,
+        index: index,
+        title: title,
+        poster: poster,
+        content: content
+    };
+
+    PostModel.updatePostById(postId, authorId, post)
         .then(function () {
             req.flash('success', 'edit post succeed');
             res.redirect(`/posts/${section}/${postId}`);
