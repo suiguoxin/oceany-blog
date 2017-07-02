@@ -302,10 +302,6 @@ router.get('/:section/:postId/delete', function (req, res) {
             CommentModel.deleteCommentsByPostId(postId);
             req.flash('success', 'delete post succeed');
 
-            if (section === 'newsletters') {
-                res.redirect('/newsletters');
-                return;
-            }
             res.redirect(`/posts/${section}`);
         });
 });
