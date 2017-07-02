@@ -1,7 +1,8 @@
 <div class="post-content">
     <h3><%- post.title %></h3>
     <p class="text-muted">
-        <i class="fa fa-clock-o" aria-hidden="true"></i> <%= post.created_at %> by <a href="#"><%- post.author.name %></a>
+        <i class="fa fa-clock-o" aria-hidden="true"></i> <%= post.created_at %> by <a
+                href="#"><%- post.author.name %></a>
     </p>
 </div>
 
@@ -23,10 +24,12 @@
             <span data-toggle="dropdown"> <span class="fa fa-caret-down" aria-hidden="true"></span></span>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/posts/<%= section %>/<%= post._id %>/edit">编辑</a>
-                <a class="dropdown-item" href="/posts/<%= section %>/<%= post._id %>/delete">删除</a>
+                <a class="dropdown-item" data-href="/posts/<%= section %>/<%= post._id %>/delete" data-toggle="modal"
+                   data-target="#confirm-delete">删除</a>
             </div>
         </span>
         <% } %>
     </div>
 </div>
+
 <hr class="my-3">

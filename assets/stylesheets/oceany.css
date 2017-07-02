@@ -48,7 +48,7 @@ body {
 /*
  * Notification
  */
-.alert {
+.notification {
     margin-bottom: 0;
     position:relative;
     z-index: 1;

@@ -17,7 +17,8 @@
                     </div>
                     <div>
                         <% if (user && comment.author._id && user._id.toString() === comment.author._id.toString()) { %>
-                        <a href="/posts/<%= section %>/<%= post._id %>/comments/<%= comment._id %>/delete">
+                        <a href="" data-href="/posts/<%= section %>/<%= post._id %>/comments/<%= comment._id %>/delete" data-toggle="modal"
+                           data-target="#confirm-delete">
                             <span class="fa fa-remove"> 删除</span>
                         </a>
                         <% } %>
