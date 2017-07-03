@@ -86,6 +86,7 @@
             contentType: false,
             success: function (res) {
                 $('#post-content').val(res.content);
+                return
             },
             error: function (res) {
                 alert(res);

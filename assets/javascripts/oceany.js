@@ -1,8 +1,8 @@
 (function ($) {
     $(document).ajaxStart(function () {
-        $('#spinner').fadeIn();
+        $('#wait-loading').modal('show');
     }).ajaxStop(function () {
-        $('#spinner').fadeOut();
+        $('#wait-loading').modal('hide');
     });
 
     // confirm delete modal
