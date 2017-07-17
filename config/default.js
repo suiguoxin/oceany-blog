@@ -6,7 +6,8 @@ module.exports = {
         maxAge: 2592000000
     },
     //mlab
-    mongodb: 'mongodb://admin:admin@ds145009.mlab.com:45009/oceany',
+    // mongodb: 'mongodb://admin:admin@ds145009.mlab.com:45009/oceany',
+    mongodb: 'mongodb://admin:admin@ds117931.mlab.com:17931/oceany-prod',
     // qn
     qn: {
         accessKey: 'IThkAny7wzlPGCR2pcJT8IrWkdes0Ic7PR38OwoQ',

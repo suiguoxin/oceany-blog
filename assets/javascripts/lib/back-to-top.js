@@ -19,7 +19,6 @@
             return false;
         });
 
-        $btt.tooltip('show');
     };
 
 }(jQuery));

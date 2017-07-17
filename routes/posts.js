@@ -171,7 +171,6 @@ router.get('/:section', function (req, res) {
         let page = req.query.page ? parseInt(req.query.page) : 1;
         console.log("getting page " + page + "...");
 
-        let section = 'newsletters';
         const size = 3;
 
         PostModel.getPostsCountBySection(section)
@@ -197,13 +196,15 @@ router.get('/:section', function (req, res) {
     } else {
         Promise.all([
             MenuModel.getMenuBySection(section),
-            PostModel.getPostsBySection(section)
+            PostModel.getPostsBySection(section),
+            PostModel.getPostBySectionAndIndex(section, '0') //introduction
         ])
             .then(function (result) {
                 res.render(`posts/index`, {
                     section: section,
                     menuItems: result[0].items,
-                    posts: result[1]
+                    posts: result[1],
+                    post: result[2]
                 });
             });
     }
