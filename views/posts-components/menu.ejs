@@ -1,6 +1,6 @@
 <div>
     <h5 class="ml-4">Index <a href="/menu/<%- section %>">
-            <% if (user && user.role == 'admin') { %>
+            <% if (user && (user.role == 'author' || user.role == 'admin')) { %>
             <span class="fa fa-pencil-square-o"></span></a>
         <% } %>
     </h5>

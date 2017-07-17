@@ -250,13 +250,14 @@ router.get('/:section/:postId', function (req, res) {
 });
 
 router.get('/:section/:postId/edit', checkLogin, function (req, res) {
-    let postId = req.params.postId;
-    let author = req.session.user._id;
+    const postId = req.params.postId;
+    const user = req.session.user;
 
     PostModel.getRawPostById(postId)
         .then(function (result) {
             let post = result;
-            if (author.toString() !== post.author._id.toString()) {
+
+            if ((user._id.toString() !== post.author._id.toString()) && user.role !== 'admin') {
                 throw new Error('权限不足');
             }
             res.render('posts/edit', {
@@ -266,10 +267,10 @@ router.get('/:section/:postId/edit', checkLogin, function (req, res) {
 });
 
 router.post('/:section/:postId/edit', function (req, res) {
-    let section = req.params.section;
+    const section = req.params.section;
+    const postId = req.params.postId;
     let menuIndex = req.body.menuIndex || '';
     let index = req.body.index || '';
-    let postId = req.params.postId;
     let authorId = req.session.user._id;
     let title = req.body.title;
     let content = req.body.content;
