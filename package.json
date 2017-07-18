@@ -1,7 +1,7 @@
 {
-  "name": "OCEANY",
+  "name": "SEASIM",
   "version": "1.0.0",
-  "description": "blog system for oceany",
+  "description": "website of seasim",
   "main": "app.js",
   "scripts": {
     "start": "pm2 start ecosystem.config.js --env production",

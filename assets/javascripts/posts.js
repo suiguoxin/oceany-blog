@@ -19,6 +19,11 @@
     // });
 
     $(document).ready(function () {
+        $(document).ready(function(){
+            $("nav .navbar-nav .nav-item").removeClass("active");
+            $("#nav-item-post").addClass("active");
+        });
+
         $('#back-to-top').backToTop($('#main'));
     });
 
