@@ -19,7 +19,7 @@
         <span class="post-meta-right-child">浏览(<%= post.pv %>)</span>
         <span class="post-meta-right-child">评论(<%= post.commentsCount %>)</span>
 
-        <% if((user && post.author._id && user._id.toString() === post.author._id.toString() ) || user.role == 'admin') { %>
+        <% if((user && post.author._id && user._id.toString() === post.author._id.toString() ) || (user && user.role == 'admin')) { %>
         <span class="dropdown">
             <span data-toggle="dropdown"> <span class="fa fa-caret-down" aria-hidden="true"></span></span>
             <div class="dropdown-menu">
