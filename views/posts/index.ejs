@@ -17,7 +17,12 @@
             </a>
             <div class="row">
                 <div class="col-10 offset-1" id="content">
+                    <% if(post) { %>
                     <%- include('../posts-components/post-content-complete') %>
+                    <% } %>
+                    <% if(post == undefined) { %>
+                    <%- section %>
+                    <% } %>
                 </div>
             </div>
         </div>
