@@ -5,10 +5,11 @@
 .team-member,
 .team-member .team-img {
     position: relative;
+    text-align: center;
 }
 
 .team-member .team-img img {
-    width: 100%;
+    width: 80%;
     height: auto;
 }
 
