@@ -5,6 +5,7 @@ let profileRouter = require('./profile');
 let postsRouter = require('./posts');
 let questionsRouter = require('./questions');
 let menuRouter = require('./menu');
+let consultRouter = require('./consult');
 let aboutRouter = require('./about');
 
 module.exports = function (app) {
@@ -23,4 +24,5 @@ module.exports = function (app) {
     app.use('/questions', questionsRouter);
     app.use('/menu', menuRouter);
     app.use('/about', aboutRouter);
+    app.use('/consult', consultRouter);
 };
